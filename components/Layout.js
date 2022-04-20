@@ -12,17 +12,17 @@ export default function Layout({ children }) {
             height={100}
           />
         </div>
-        <div className="flex space-x-6 text-xs font-bold">
+        <div className="flex space-x-6 text-xs font-bold text-gray-500">
           <Link href="/">
             <span className="cursor-pointer">Home</span>
           </Link>
-          <Link href="/">
+          <Link href="/products">
             <span className="cursor-pointer">Products</span>
           </Link>
-          <Link href="/">
+          <Link href="/contact">
             <span className="cursor-pointer">Contact</span>
           </Link>
-          <Link href="/">
+          <Link href="/about">
             <span className="cursor-pointer">About</span>
           </Link>
         </div>
