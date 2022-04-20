@@ -28,19 +28,19 @@ export default function products() {
         </div>
         <div className="flex mb-4 justify-center items-center">
           <div className="flex space-x-16 text-xs font-bold text-gray-500">
-            <Link href="/">
+            <Link href="/products/furniture">
               <span className="cursor-pointer">Furniture</span>
             </Link>
-            <Link href="/">
+            <Link href="/products/electronics">
               <span className="cursor-pointer">Electronics</span>
             </Link>
-            <Link href="/">
+            <Link href="/products/vehicles">
               <span className="cursor-pointer">Vehicles</span>
             </Link>
-            <Link href="/">
+            <Link href="/products/accesories">
               <span className="cursor-pointer">Accessories</span>
             </Link>
-            <Link href="/">
+            <Link href="/products/fashion">
               <span className="cursor-pointer">Fashion</span>
             </Link>
           </div>
