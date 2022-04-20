@@ -6,7 +6,7 @@ export default function Layout({ children }) {
       <nav className="p-2 flex w-screen h-20 justify-between items-center">
         <div className="ml-6 cursor-pointer">
           <Image
-            src="/assets/icons/logo.svg"
+            src="/assets/Icons/logo.svg"
             alt="Shopify logo"
             width={100}
             height={100}
@@ -29,7 +29,7 @@ export default function Layout({ children }) {
         <div className="flex mr-6 space-x-3">
           <div className=" relative h-9 w-9 cursor-pointer flex justify-center items-center border-2 border-grey-500 rounded-full">
             <Image
-              src="/assets/icons/bag.svg"
+              src="/assets/Icons/bag.svg"
               alt="cart bag"
               width={15}
               height={15}
