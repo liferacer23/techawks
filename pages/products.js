@@ -13,7 +13,7 @@ export default function products() {
             <div className="flex w-1/12 justify-center items-center rounded-tl-2xl">
               <Image
                 className="cursor-pointer"
-                src="/assets/icons/search.svg"
+                src="/assets/Icons/search.svg"
                 width={15}
                 alt="search icon"
                 height={15}
