@@ -34,7 +34,7 @@ export default function ProductsLayout({ children, results }) {
           <div className="flex space-x-16 text-xs font-bold text-gray-500">
           {results.categories.map((payload)=>{
     return(
-      <Link key={payload.categoryId} href={`products/product/${payload.categoryId}`}>
+      <Link key={payload.categoryId} href={`/products/product/${payload.categoryId}`}>
       <span className="cursor-pointer">{payload.name}</span>
     </Link>
 
@@ -44,27 +44,6 @@ export default function ProductsLayout({ children, results }) {
         </div>
       </div>
       <hr className="mt-8" />
-      <div className="flex items-center space-x-4 justify-center w-full h-full">
-        <div className=" h-100 w-1/6 flex flex-col space-y-3">
-          {/* Left Container */}
-          <div className=" flex flex-col items-left mt-2 justify-center">
-            {/* Left-Container-Top */}
-            <h5 className="text-xs font-bold">
-              Filter <hr className="mt-2" />{" "}
-            </h5>
-            {/* Filter Items */}
-            <div className=" flex items-center space-x-1 mt-1">
-              <input type="checkbox" name="sofas" value="Sofas" />
-              <label className="text-xs" htmlFor="sofas">
-                Sofas
-              </label>
-            </div>
-          </div>
-          <hr className="mt-2" />
-          {/* Body Right */}
-        </div>
-        <div className="w-5/6">{children}</div>
-      </div>
     </div>
   );
 }
