@@ -12,11 +12,11 @@ export default function Layout({ children }) {
             height={100}
           />
         </div>
-        <div className="flex space-x-6 text-xs font-bold text-gray-500">
+        <div className="flex space-x-14 text-xs font-bold text-gray-500">
           <Link href="/">
             <span className="cursor-pointer">Home</span>
           </Link>
-          <Link href="/products">
+          <Link href="/products/product/aeb50ed6-580d-a065-383a-e3932fbec6a1">
             <span className="cursor-pointer">Products</span>
           </Link>
           <Link href="/contact">

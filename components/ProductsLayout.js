@@ -1,15 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import { useRouter } from "next/router";
 
 export default function ProductsLayout({ children, results }) {
-/*   const { data, loading, error } = useQuery(QUERY);*/
-  console.log(results); 
+  /*   const { data, loading, error } = useQuery(QUERY);*/
+
+  const router = useRouter();
+  //console.log(results);
+  // console.log(router);
+
   return (
     //BODY
     <div className="h-5/6 pt-2 mx-8">
       {/*    Search and links container */}
-      <div className="h-full w-full flex flex-col space-y-3">
+      <div className="h-full w-full flex flex-col space-y-2">
         {/*Outter Search container */}
         <div className="flex justify-center items-center p-2 ">
           {/* Inner Search Container */}
@@ -31,15 +35,25 @@ export default function ProductsLayout({ children, results }) {
           </div>
         </div>
         <div className="flex mb-4 justify-center items-center">
-          <div className="flex space-x-16 text-xs font-bold text-gray-500">
-          {results.categories.map((payload)=>{
-    return(
-      <Link key={payload.categoryId} href={`/products/product/${payload.categoryId}`}>
-      <span className="cursor-pointer">{payload.name}</span>
-    </Link>
-
-    )
-  })}
+          <div className="flex space-x-8 text-xs font-bold text-gray-400">
+            {results.categories.map((payload) => {
+              return (
+                <Link
+                  key={payload.categoryId}
+                  href={`/products/product/${payload.categoryId}`}
+                  passHref
+                >
+                  <div className="p-1 flex flex-col space-y-2 items-center">
+                    <span className={`cursor-pointer ${payload.categoryId === router.query.product?"text-black":""}`}>{payload.name}</span>
+                    {payload.categoryId === router.query.product ? (
+                      <span className="bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></span>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -47,4 +61,3 @@ export default function ProductsLayout({ children, results }) {
     </div>
   );
 }
-
