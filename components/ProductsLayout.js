@@ -6,7 +6,7 @@ export default function ProductsLayout({ children, results }) {
   /*   const { data, loading, error } = useQuery(QUERY);*/
 
   const router = useRouter();
-  //console.log(results);
+  console.log(results);
   // console.log(router);
 
   return (

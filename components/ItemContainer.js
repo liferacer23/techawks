@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
-export default function ItemContainer({ Items ,filter}) {
+import { useEffect } from "react";
+export default function ItemContainer({ setFilter,Items ,filter}) {
+
+
   return (
     <div className="h-full w-full flex flex-wrap gap-8 p-1">
       {Items.products.filter((res)=>{

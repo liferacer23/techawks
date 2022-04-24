@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState,useEffect} from "react";
 import { gql /* useQuery */ } from "@apollo/client";
 import client from "../../../apolloClient";
 import ProductsLayout from "../../../components/ProductsLayout";
 import ItemContainer from "../../../components/ItemContainer";
+
+
 export const getServerSideProps = async ({ params }) => {
+
   const categoryId = params.product.toString();
 
   const { data } = await client.query({
@@ -42,16 +45,21 @@ export const getServerSideProps = async ({ params }) => {
   return {
     props: {
       results: data,
+      params:params
     },
   };
 };
 
-export default function Product({ results }) {
+
+export default function Product({ results,params }) {
   /*   const { data, loading, error } = useQuery(QUERY);*/
   const [filter, setFilter] = useState([]);
-  console.log(results);
+  //console.log(results);
   console.log(filter);
 
+  useEffect(()=>{
+    setFilter(prev=>prev=[])
+  },[params.product])
 
   const checkBoxHandler2 = (id) => {
     if(filter.includes(id)){
@@ -86,7 +94,7 @@ export default function Product({ results }) {
               {results.category.subCategories.map((data) => {
                 return (
                   <div
-                    key={data.name}
+                    key={data.subCategoryId}
                     className=" flex items-center space-x-1 mt-1"
                   >
                     <input
@@ -112,7 +120,7 @@ export default function Product({ results }) {
             {/* Body Right */}
           </div>
           <div className="flex h-full p-2 w-5/6">
-            <ItemContainer filter={filter} Items={results.category} />
+            <ItemContainer setFilter={setFilter} filter={filter} Items={results.category} />
           </div>
         </div>
       </div>
