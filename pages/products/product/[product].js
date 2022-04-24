@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
 import { gql /* useQuery */ } from "@apollo/client";
 import client from "../../../apolloClient";
 import ProductsLayout from "../../../components/ProductsLayout";
@@ -15,12 +14,14 @@ export const getServerSideProps = async ({ params }) => {
                    name
                    subCategories{
                      name
+                     subCategoryId
                    }
             products{
               name
               productId
               discount
               price
+              subCategoryId
               images{
         productId
                 url
@@ -47,16 +48,26 @@ export const getServerSideProps = async ({ params }) => {
 
 export default function Product({ results }) {
   /*   const { data, loading, error } = useQuery(QUERY);*/
+  const [filter, setFilter] = useState([]);
   console.log(results);
+  console.log(filter);
+
+  const checkBoxHandler = (e) => {
+    if (filter.includes(e.target.value)) {
+      setFilter(filter.filter(item => item !== e.target.value));
+    } else {
+      setFilter([...filter, e.target.value]);
+    }
+  };
   return (
     //BODY
     <>
       <ProductsLayout results={results} />
       <div className="h-full pt-2 mx-8">
-        <div className=" flex space-x-4 w-full h-full">
+        <div className="flex space-x-4 w-full h-full">
           <div className="h-100 w-1/6 flex flex-col space-y-3">
             {/* Left Container */}
-            <div className=" flex flex-col items-left mt-2 justify-center">
+            <div className="flex flex-col items-left mt-2 justify-center">
               {/* Left-Container-Top */}
               <h5 className="text-xs font-bold">
                 Filter <hr className="mt-2" />{" "}
@@ -66,13 +77,23 @@ export default function Product({ results }) {
               {results.category.subCategories.map((data) => {
                 return (
                   <div
-                    key={data.categoryId}
+                    key={data.name}
                     className=" flex items-center space-x-1 mt-1"
                   >
-                    <input type="checkbox" name={data.name} value={data.name} />
+                    <input
+                    className="indeterminate:bg-gray-3 checked:bg-red-500"
+                      type="checkbox"
+                      id={data.name}
+                      onChange={(e) => {
+                        checkBoxHandler(e);
+                      }}
+                      name={data.name}
+                      value={data.subCategoryId}
+                    />
                     <label className="text-xs" htmlFor={data.name}>
                       {data.name}
                     </label>
+                  
                   </div>
                 );
               })}
@@ -81,7 +102,7 @@ export default function Product({ results }) {
             {/* Body Right */}
           </div>
           <div className="flex h-full p-2 w-5/6">
-            <ItemContainer Items={results.category}/>
+            <ItemContainer filter={filter} Items={results.category} />
           </div>
         </div>
       </div>

@@ -1,11 +1,18 @@
 import React from "react";
 import Image from "next/image";
-export default function ItemContainer({ Items }) {
+export default function ItemContainer({ Items ,filter}) {
   return (
     <div className="h-full w-full flex flex-wrap gap-8 p-1">
-      {Items.products.map((product)=>{
+      {Items.products.filter((res)=>{
+        if(filter.length===0){
+          return res
+        }
+        else if(filter.includes(res.subCategoryId)){
+          return res
+        }
+      }).map((product)=>{
 return(
-  <div key={product.Id} className="w-56 shadow-3xl h-76 flex-col p-3 rounded-xl space-y-2">
+  <div key={product.productId} className="w-56 shadow-3xl h-76 flex-col p-3 rounded-xl space-y-2">
   <div className="relative h-56 w-full">
     <Image
       className="rounded-xl"
@@ -13,8 +20,6 @@ return(
       alt="Product Image"
       layout="fill"
       objectFit="cover"
-      width={100}
-      height={100}
     />
   </div>
   <div className=" flex flex-col space-y-3 h-2/6 w-full">

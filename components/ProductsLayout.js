@@ -17,8 +17,8 @@ export default function ProductsLayout({ children, results }) {
         {/*Outter Search container */}
         <div className="flex justify-center items-center p-2 ">
           {/* Inner Search Container */}
-          <div className="w-4/12 flex items-center justify-center rounded-b-2xl rounded-t-2xl border-2 border-gray-200">
-            <div className="flex w-1/12 justify-center items-center rounded-tl-2xl">
+          <div className="  w-4/12 flex items-center justify-center rounded-b-2xl rounded-t-2xl border-2 border-gray-200">
+            <div className=" flex w-1/12 justify-center items-center rounded-tl-2xl">
               <Image
                 className="cursor-pointer"
                 src="/assets/Icons/search.svg"

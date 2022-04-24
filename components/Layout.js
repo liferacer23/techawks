@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Layout({ children }) {
   return (
-    <div>
+    <div >
       <nav className="p-2 flex w-screen h-20 justify-between items-center">
         <div className="ml-6 cursor-pointer">
           <Image
