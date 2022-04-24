@@ -110,7 +110,7 @@ export default function Product({ results,params }) {
                       name={data.name}
                       value={data.subCategoryId}
                     />
-                    <label className="text-xs" htmlFor={data.name}>
+                    <label className="text-xs font-bold" htmlFor={data.name}>
                       {data.name}
                     </label>
                   
@@ -118,10 +118,24 @@ export default function Product({ results,params }) {
                 );
               })}
               <hr className="mt-2" />
-              <div className=" flex items-center space-x-1 mt-1">
-                Sort
-                <input type="radio" id="discounts" />
-                <label htmlFor="discounts">Discounts</label>
+              <div className=" flex flex-col space-y-1 mt-1">
+               <h6 className="text-xs font-bold">Sort</h6>
+               <div className="flex items-center space-x-1">
+                <input name="sort" type="radio" id="discounts" />
+                <label className="text-xs font-bold" htmlFor="discounts">Discounts</label>
+                </div>
+               <div className="flex items-center space-x-1">
+                <input name="sort" type="radio" id="discounts" />
+                <label className="text-xs font-bold" htmlFor="discounts">Best Selling</label>
+                </div>
+               <div className="flex items-center space-x-1">
+                <input name="sort" type="radio" id="discounts" />
+                <label className="text-xs font-bold" htmlFor="discounts">Price, Low to High</label>
+                </div>
+               <div className="flex items-center space-x-1">
+                <input name="sort" type="radio" id="discounts" />
+                <label className="text-xs font-bold" htmlFor="discounts">Price, High to Low</label>
+                </div>
               </div>
             </div>
             {/* Body Right */}
