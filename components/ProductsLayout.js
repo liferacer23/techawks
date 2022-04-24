@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
-export default function ProductsLayout({ children, results }) {
+export default function ProductsLayout({setSearch,results }) {
   /*   const { data, loading, error } = useQuery(QUERY);*/
-
+  //const [searchItem, setSearchItem] = useState("");
   const router = useRouter();
-  console.log(results);
+  //console.log(results);
   // console.log(router);
 
   return (
@@ -28,6 +29,7 @@ export default function ProductsLayout({ children, results }) {
               />
             </div>
             <input
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Search.."
               className=" outline-0 h-9 w-11/12 rounded-tr-3xl rounded-br-3xl"
               type="text"

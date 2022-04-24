@@ -54,8 +54,10 @@ export const getServerSideProps = async ({ params }) => {
 export default function Product({ results,params }) {
   /*   const { data, loading, error } = useQuery(QUERY);*/
   const [filter, setFilter] = useState([]);
+  const [search, setSearch] = useState("");
   //console.log(results);
-  console.log(filter);
+  //console.log(filter);
+  //console.log(search);
 
   useEffect(()=>{
     setFilter(prev=>prev=[])
@@ -79,7 +81,7 @@ export default function Product({ results,params }) {
   return (
     //BODY
     <>
-      <ProductsLayout results={results} />
+      <ProductsLayout setSearch={setSearch} results={results} />
       <div className="h-full pt-2 mx-8">
         <div className="flex space-x-4 w-full h-full">
           <div className="h-100 w-1/6 flex flex-col space-y-3">
@@ -116,11 +118,16 @@ export default function Product({ results,params }) {
                 );
               })}
               <hr className="mt-2" />
+              <div className=" flex items-center space-x-1 mt-1">
+                Sort
+                <input type="radio" id="discounts" />
+                <label htmlFor="discounts">Discounts</label>
+              </div>
             </div>
             {/* Body Right */}
           </div>
           <div className="flex h-full p-2 w-5/6">
-            <ItemContainer setFilter={setFilter} filter={filter} Items={results.category} />
+            <ItemContainer search={search} setFilter={setFilter} filter={filter} Items={results.category} />
           </div>
         </div>
       </div>
