@@ -52,6 +52,15 @@ export default function Product({ results }) {
   console.log(results);
   console.log(filter);
 
+
+  const checkBoxHandler2 = (id) => {
+    if(filter.includes(id)){
+      return true
+    }
+    else 
+    return false
+  }
+
   const checkBoxHandler = (e) => {
     if (filter.includes(e.target.value)) {
       setFilter(filter.filter(item => item !== e.target.value));
@@ -81,6 +90,7 @@ export default function Product({ results }) {
                     className=" flex items-center space-x-1 mt-1"
                   >
                     <input
+                    checked={checkBoxHandler2(data.subCategoryId)}
                     className="indeterminate:bg-gray-3 checked:bg-red-500"
                       type="checkbox"
                       id={data.name}
