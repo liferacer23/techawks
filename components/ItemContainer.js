@@ -35,7 +35,7 @@ export default function ItemContainer({ search, Items, filter }) {
                   objectFit="cover"
                 />
    <div className="text-white text-xs right-3 absolute bg-discount h-12 w-12 flex justify-center items-center">
-{product.discount}
+{product.discount}%
    </div>
               </div>
               <div className=" flex flex-col space-y-3 h-2/6 w-full">
