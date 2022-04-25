@@ -17,6 +17,9 @@ export default function ItemContainer({ search, Items, filter }) {
             if (res.name.toLowerCase().includes(search.toLowerCase()) && filter.includes(res.subCategoryId)) {
               return res;
             }
+            else if (res.name.toLowerCase().includes(search.toLowerCase())){
+              return res;
+            }
           }
         })
         .map((product) => {
@@ -26,7 +29,7 @@ export default function ItemContainer({ search, Items, filter }) {
               key={product.productId}
               className="w-56 shadow-3xl h-76 flex-col p-3 rounded-xl space-y-2"
             >
-              <div className="relative h-56 w-full">
+              <div className="relative rounded-xl h-56 w-full">
                 <Image
                   className="rounded-xl"
                   src={product.images[3].url}
