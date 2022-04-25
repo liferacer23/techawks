@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      height: {
+        '100': '25rem',
+      },
       boxShadow:{
         '3xl':'0 10px 20px rgba(0, 0, 0, 0.2)',
       },

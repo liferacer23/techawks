@@ -15,6 +15,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-family: 'SegUIVar';
+
   
 }
 
@@ -28,6 +29,7 @@ a {
 }
 ::-webkit-scrollbar{
   width: 6px;
+  height: 0px;
   
 }
 ::-webkit-scrollbar-track{

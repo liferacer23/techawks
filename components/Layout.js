@@ -2,12 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import CartModal from "./CartModal";
 import { useState } from "react";
+import { useRouter } from "next/router";
 export default function Layout({ children }) {
-
-  const [cartFlipper,setCartFlipper]=useState(false);
+  const [cartFlipper, setCartFlipper] = useState(false);
+  const router = useRouter();
   return (
-    <div >
-      <nav className="p-2 flex w-screen h-20 justify-between items-center">
+    <div>
+      <nav className="sticky top-0 z-40 flex w-screen h-20">
+        <div className=" flex p-2 justify-between items-center mx-5 bg-white w-full">
         <div className="ml-6 cursor-pointer">
           <Image
             src="/assets/Icons/logo.svg"
@@ -17,21 +19,51 @@ export default function Layout({ children }) {
           />
         </div>
         <div className="flex space-x-14 text-xs font-bold text-gray-500">
-          <Link href="/">
-            <span className="cursor-pointer">Home</span>
+          <Link href="/Home">
+            <div className="flex flex-col space-y-1 w-1/4 items-center justify-start p-1">
+              <span className="cursor-pointer ">Home</span>
+              {router.asPath == "/Home" ? (
+                <span className="bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></span>
+              ) : null}
+            </div>
           </Link>
+          
           <Link href="/products/product/aeb50ed6-580d-a065-383a-e3932fbec6a1">
+            <div className="flex flex-col space-y-1 w-1/4 items-center justify-start p-1">
+              
             <span className="cursor-pointer">Products</span>
-          </Link>
+          { router.asPath=="/products/product/aeb50ed6-580d-a065-383a-e3932fbec6a1"?<span className=" bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></span>:null}
+
+            </div>
+  
+            </Link>
+      
           <Link href="/contact">
-            <span className="cursor-pointer">Contact</span>
+            <div className="flex flex-col space-y-1 w-1/4 items-center justify-start p-1">
+              <span className="cursor-pointer">
+                Contact
+              </span>
+              {router.asPath == "/contact" ? (
+                <span className="bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></span>
+              ) : null}
+            </div>
           </Link>
           <Link href="/about">
-            <span className="cursor-pointer">About</span>
+            <div className="flex flex-col space-y-1 w-1/4 items-center justify-start p-1">
+              <span className="cursor-pointer">about</span>
+              {router.asPath == "/about" ? (
+                <span className=" bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></span>
+              ) : null}
+            </div>
           </Link>
         </div>
         <div className="flex mr-6 space-x-3">
-          <div onClick={()=>{setCartFlipper(prev=>!prev)}} className=" relative h-9 w-9 cursor-pointer flex justify-center items-center border-2 border-grey-500 rounded-full">
+          <div
+            onClick={() => {
+              setCartFlipper((prev) => !prev);
+            }}
+            className=" relative h-9 w-9 cursor-pointer flex justify-center items-center border-2 border-grey-500 rounded-full"
+          >
             <Image
               src="/assets/Icons/bag.svg"
               alt="cart bag"
@@ -39,7 +71,7 @@ export default function Layout({ children }) {
               height={15}
             />
             <span className=" flex justify-center items-center text-xxs font-bold text-white h-3.5 w-3.5 rounded-full top-0 -right-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 absolute">
-                3
+              3
             </span>
           </div>
           <div className="relative cursor-pointer h-9 w-9 flex justify-center items-center border-2 border-grey-500 rounded-full">
@@ -52,14 +84,14 @@ export default function Layout({ children }) {
             />
           </div>
         </div>
+        </div>
       </nav>
-      <hr className="mx-8 w-90" />
 
       {children}
-      <footer>
-
-      </footer>
-      {cartFlipper?<CartModal cartFlipper={cartFlipper} setCartFlipper={setCartFlipper}/>:null}
+      <footer></footer>
+      {cartFlipper ? (
+        <CartModal cartFlipper={cartFlipper} setCartFlipper={setCartFlipper} />
+      ) : null}
     </div>
   );
 }

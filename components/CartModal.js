@@ -6,7 +6,7 @@ export default function CartModal({ setCartFlipper }) {
     setCartFlipper((prev) => !prev);
   };
   return (
-    <div className="fixed inset-0">
+    <div className="z-50 fixed inset-0">
       <div
         onClick={(e) => {
           cartHandler(e);

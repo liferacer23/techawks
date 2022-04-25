@@ -82,14 +82,14 @@ export default function Product({ results,params }) {
     //BODY
     <>
       <ProductsLayout setSearch={setSearch} results={results} />
-      <div className="h-full pt-2 mx-8">
+      <div className=" h-full pt-2 mx-8">
         <div className="flex space-x-4 w-full h-full">
-          <div className="h-100 w-1/6 flex flex-col space-y-3">
+          <div className="sticky left-0 top-[198px] h-100 overflow-y-scroll w-1/6 flex flex-col space-y-3">
             {/* Left Container */}
             <div className="flex flex-col items-left mt-2 justify-center">
               {/* Left-Container-Top */}
               <h5 className="text-xs font-bold">
-                Filter <hr className="mt-2" />{" "}
+                Filter <hr className="mt-2 mx-1" />{" "}
               </h5>
               {/* Filter Items */}
 
@@ -117,7 +117,7 @@ export default function Product({ results,params }) {
                   </div>
                 );
               })}
-              <hr className="mt-2" />
+              <hr className="mt-2 mx-1" />
               <div className=" flex flex-col space-y-1 mt-1">
                <h6 className="text-xs font-bold">Sort</h6>
                <div className="flex items-center space-x-1">
