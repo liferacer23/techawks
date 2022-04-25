@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import CartModal from "./CartModal";
+import { useState } from "react";
 export default function Layout({ children }) {
+
+  const [cartFlipper,setCartFlipper]=useState(false);
   return (
     <div >
       <nav className="p-2 flex w-screen h-20 justify-between items-center">
@@ -27,7 +31,7 @@ export default function Layout({ children }) {
           </Link>
         </div>
         <div className="flex mr-6 space-x-3">
-          <div className=" relative h-9 w-9 cursor-pointer flex justify-center items-center border-2 border-grey-500 rounded-full">
+          <div onClick={()=>{setCartFlipper(prev=>!prev)}} className=" relative h-9 w-9 cursor-pointer flex justify-center items-center border-2 border-grey-500 rounded-full">
             <Image
               src="/assets/Icons/bag.svg"
               alt="cart bag"
@@ -50,8 +54,12 @@ export default function Layout({ children }) {
         </div>
       </nav>
       <hr className="mx-8 w-90" />
+
       {children}
-      <footer></footer>
+      <footer>
+
+      </footer>
+      {cartFlipper?<CartModal cartFlipper={cartFlipper} setCartFlipper={setCartFlipper}/>:null}
     </div>
   );
 }

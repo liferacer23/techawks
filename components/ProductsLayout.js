@@ -59,7 +59,7 @@ export default function ProductsLayout({setSearch,results }) {
           </div>
         </div>
       </div>
-      <hr className="mt-8" />
+      <hr className="w-90" />
     </div>
   );
 }
