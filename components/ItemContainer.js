@@ -13,17 +13,18 @@ export default function ItemContainer({ search, Items, filter }) {
             } else if (filter.includes(res.subCategoryId)) {
               return res;
             }
-          } else if (search !== "") {
-            if (res.name.toLowerCase().includes(search.toLowerCase()) && filter.includes(res.subCategoryId)) {
+          } else if(search !== "" && filter.length === 0){
+            if(res.name.toLowerCase().includes(search.toLowerCase())){
               return res;
             }
-            else if (res.name.toLowerCase().includes(search.toLowerCase())){
+          }
+          else if (search !== "" && filter.length !== 0) {
+            if (res.name.toLowerCase().includes(search.toLowerCase()) && filter.includes(res.subCategoryId)) {
               return res;
             }
           }
         })
         .map((product) => {
-          console.log(product);
           return (
             <div
               key={product.productId}
