@@ -185,15 +185,14 @@ export default function Product({ results, params }) {
               filter={filter}
               Items={
                 sort === "discount"
-                  ? data.sort((a, b) => a.discount > b.discount ? 1 : -1)
-                  :  sort === "best selling"
+                  ? data.sort((a, b) => (a.discount > b.discount ? 1 : -1))
+                  : sort === "best selling"
                   ? data.sort((a, b) => (b.unitsSold > a.unitsSold ? 1 : -1))
-                  : 
-                sort === "increasing"
+                  : sort === "increasing"
                   ? data.sort((a, b) => (a.price > b.price ? 1 : -1))
-                  :   sort === "decreasing"
+                  : sort === "decreasing"
                   ? data.sort((a, b) => (b.price > a.price ? 1 : -1))
-                 :data
+                  : data
               }
             />
           </div>
