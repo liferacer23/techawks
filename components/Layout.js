@@ -19,7 +19,7 @@ export default function Layout({ children }) {
           />
         </div>
         <div className="flex space-x-14 text-xs font-bold text-gray-500">
-          <Link href="/Home">
+          <Link href="/">
             <div className="flex flex-col space-y-1 w-1/4 items-center justify-start p-1">
               <span className="cursor-pointer ">Home</span>
               {router.asPath == "/" ? (
