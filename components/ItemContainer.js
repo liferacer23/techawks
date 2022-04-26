@@ -2,10 +2,11 @@ import React from "react";
 import Image from "next/image";
 import { useEffect } from "react";
 export default function ItemContainer({ search, Items, filter }) {
- // console.log(search);
+  //console.log(Items);
+
   return (
     <div className="h-full w-full flex flex-wrap gap-8 p-1">
-      {Items.products
+      {Items
         .filter((res) => {
           if (search === "") {
             if (filter.length === 0) {
@@ -13,13 +14,15 @@ export default function ItemContainer({ search, Items, filter }) {
             } else if (filter.includes(res.subCategoryId)) {
               return res;
             }
-          } else if(search !== "" && filter.length === 0){
-            if(res.name.toLowerCase().includes(search.toLowerCase())){
+          } else if (search !== "" && filter.length === 0) {
+            if (res.name.toLowerCase().includes(search.toLowerCase())) {
               return res;
             }
-          }
-          else if (search !== "" && filter.length !== 0) {
-            if (res.name.toLowerCase().includes(search.toLowerCase()) && filter.includes(res.subCategoryId)) {
+          } else if (search !== "" && filter.length !== 0) {
+            if (
+              res.name.toLowerCase().includes(search.toLowerCase()) &&
+              filter.includes(res.subCategoryId)
+            ) {
               return res;
             }
           }
@@ -38,9 +41,9 @@ export default function ItemContainer({ search, Items, filter }) {
                   layout="fill"
                   objectFit="cover"
                 />
-   <div className="text-white text-xs right-3 absolute bg-discount h-12 w-12 flex justify-center items-center">
-{product.discount}%
-   </div>
+                <div className="text-white text-xs right-3 absolute bg-discount h-12 w-12 flex justify-center items-center">
+                  {product.discount}%
+                </div>
               </div>
               <div className=" flex flex-col space-y-3 h-2/6 w-full">
                 <div className=" mt-2 h-6 flex items-center justify-center space-x-20">
