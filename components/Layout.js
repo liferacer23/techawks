@@ -22,7 +22,7 @@ export default function Layout({ children }) {
           <Link href="/Home">
             <div className="flex flex-col space-y-1 w-1/4 items-center justify-start p-1">
               <span className="cursor-pointer ">Home</span>
-              {router.asPath == "/Home" ? (
+              {router.asPath == "/" ? (
                 <span className="bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></span>
               ) : null}
             </div>
