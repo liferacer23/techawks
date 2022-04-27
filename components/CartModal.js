@@ -109,7 +109,7 @@ export default function CartModal({ setCartFlipper }) {
               <div className="flex h-5/6 w-full justify-between">
                 <div className="flex flex-col space-y-1">
                   <h1 className="text-xs font-bold">ONYX WOOS CHAIR</h1>
-                  <p className="text-xs font-bold">
+                  <p className="text-xxs font-bold">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
                     quaerat voluptates laboriosam asperiores! Nam, minus ullam
                     iure nisi accusamus perferendis eum in ipsa laborum beatae
@@ -168,7 +168,7 @@ export default function CartModal({ setCartFlipper }) {
           </div>
         </div>
       </div>
-      {checkout?<Checkout setCheckout={setCheckout}/>:""}
+      {checkout?<Checkout setCartFlipper={setCartFlipper} setCheckout={setCheckout}/>:""}
     </div>
     
   );
