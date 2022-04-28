@@ -8,7 +8,7 @@ export default function CartItem({ item }) {
   const dispatch = useDispatch();
   //const cart = useSelector((state) => state.cart);
   //let productId = item.productId;
-  console.log(item);
+ 
   const DecItem = () => {
     if (itemQuantity < 0 || itemQuantity === 0) {
       setItemQuantity(1);
