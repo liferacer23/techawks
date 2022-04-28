@@ -2,16 +2,33 @@ import {useState} from "react";
 import CartItem from "./CartItem";
 import Checkout from "./Checkout";
 import { useDispatch, useSelector } from "react-redux";
+import { reset } from "../redux/cartSlice";
 export default function CartModal({ setCartFlipper }) {
 
   const [checkout, setCheckout] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector((state)=>state.cart)
-  //console.log(cart);
+  console.log(cart);
   const cartHandler = (e) => {
     e.stopPropagation();
     setCartFlipper((prev) => !prev);
   };
+
+  const clearCart = () => {
+   
+     dispatch(reset())
+  };
+
+  const buttonDisabled = () => {
+  
+    if(cart.items.length !== 0){
+      return false;
+    }
+    else(cart.items.length === 0)
+    {
+      return true;
+    }
+  }
   return (
     <div className="z-50 fixed inset-0">
       <div
@@ -32,7 +49,7 @@ export default function CartModal({ setCartFlipper }) {
               Close
             </button>
             <span className=" flex justify-center items-center text-xxs font-bold text-white h-3.5 w-3.5 rounded-full top-2 right-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 absolute">
-              3
+              {cart.items.length}
             </span>
           </div>
         </div>
@@ -55,10 +72,14 @@ return( <CartItem key={item.productId} item = {item}/>)
             <h1 className="text-xs font-bold">${cart.total}</h1>
           </div>
           <hr className="mt-1"/>
-          <div className=" flex w-full justify-end mt-2">
-              <div className="flex w-4/6 space-x-3">
-                <button onClick={()=>{setCartFlipper(prev=>!prev)}} className="border-2 border-gray-500 rounded-full text-black-500 text-xs h-9 w-48">CONTINUE SHOPPING</button>
-                <button onClick={()=>{setCheckout(prev=>!prev)}}className="border-2 border-black-500 rounded-full text-white text-xs bg-black  h-9 w-48">PROCESS TO CHECKOUT</button>
+          <div className=" flex w-full mt-2">
+              <div className="flex w-full justify-between space-x-1">
+                <div>
+                <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{clearCart()}} className="border-2 border-gray-500 rounded-full text-black font-bold text-xs h-9 w-36">CLEAR CART</button>    </div>
+                <div className="flex space-x-2"> 
+                <button onClick={()=>{setCartFlipper(prev=>!prev)}} className="border-2 border-gray-500 rounded-full text-black font-bold text-xs h-9 w-48">CONTINUE SHOPPING</button>
+                <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{setCheckout(prev=>!prev)}}className="border-2 border-black-500 rounded-full text-white text-xs bg-black  h-9 w-48">PROCESS TO CHECKOUT</button>
+                </div>
               </div>
           </div>
         </div>

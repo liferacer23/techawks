@@ -3,7 +3,10 @@ import Link from "next/link";
 import CartModal from "./CartModal";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import {useSelector } from "react-redux";
 export default function Layout({ children }) {
+
+  const cart = useSelector((state)=>state.cart)
   const [cartFlipper, setCartFlipper] = useState(false);
   const router = useRouter();
   return (
@@ -71,7 +74,7 @@ export default function Layout({ children }) {
               height={15}
             />
             <span className=" flex justify-center items-center text-xxs font-bold text-white h-3.5 w-3.5 rounded-full top-0 -right-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 absolute">
-              3
+             {cart.items.length}
             </span>
           </div>
           <div className="relative cursor-pointer h-9 w-9 flex justify-center items-center border-2 border-grey-500 rounded-full">
