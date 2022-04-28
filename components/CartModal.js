@@ -1,9 +1,13 @@
 import {useState} from "react";
-import Image from "next/image";
+import CartItem from "./CartItem";
 import Checkout from "./Checkout";
+import { useDispatch, useSelector } from "react-redux";
 export default function CartModal({ setCartFlipper }) {
 
   const [checkout, setCheckout] = useState(false);
+  const dispatch = useDispatch();
+  const cart = useSelector((state)=>state.cart)
+  //console.log(cart);
   const cartHandler = (e) => {
     e.stopPropagation();
     setCartFlipper((prev) => !prev);
@@ -38,126 +42,17 @@ export default function CartModal({ setCartFlipper }) {
             <h4 className=" font-bold text-md">Order Summary</h4>
           </div>
           {/* /////////////////////////// */}
-          <div className=" flex space-x-3 p-2">
-            <div className=" w-2/6 relative w-36 h-40 rounded-xl">
-              <Image
-                className="rounded-xl"
-                alt="item Image"
-                src="/assets/girl/girl.png"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-            <div className="  w-4/6 h-full flex flex-col p-2 space-y-3">
-              <div className="flex h-5/6 w-full justify-between">
-                <div className="flex flex-col space-y-1">
-                  <h1 className="text-xs font-bold">ONYX WOOS CHAIR</h1>
-                  <p className="text-xs font-bold">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-                    quaerat voluptates laboriosam asperiores! Nam, minus ullam
-                    iure nisi accusamus perferendis eum in ipsa laborum beatae
-                    error eos, natus dolore? Fugit?
-                  </p>
-                </div>
-                <div className="relative">
-                  <Image
-                    alt="item Image"
-                    src="/assets/Icons/remove.svg"
-                    width={60}
-                    height={60}
-                  />
-                </div>
-              </div>
-              <div className=" h-2/6 flex items-center px-2 w-full justify-between">
-                <div>
-                  <h1 className="text-xs font-bold">$14665</h1>
-                </div>
-                <div className=" w-1/4 h-full flex items-center justify-evenly p-2">
-                  <Image
-                    alt="item Image"
-                    src="/assets/Icons/add.svg"
-                    width={20}
-                    height={20}
-                  />
-
-                  <div>
-                    <h1 className="text-xs font-bold">2</h1>
-                  </div>
-                  <Image
-                    alt="item Image"
-                    src="/assets/Icons/minus.svg"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-              </div>
-            </div>
-            
-          </div>
-          <hr className="mt-2"/>
-          <div className=" flex space-x-3 p-2">
-            <div className=" w-2/6 relative w-36 h-40 rounded-xl">
-              <Image
-                className="rounded-xl"
-                alt="item Image"
-                src="/assets/girl/girl.png"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-            <div className="  w-4/6 h-full flex flex-col p-2 space-y-3">
-              <div className="flex h-5/6 w-full justify-between">
-                <div className="flex flex-col space-y-1">
-                  <h1 className="text-xs font-bold">ONYX WOOS CHAIR</h1>
-                  <p className="text-xxs font-bold">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-                    quaerat voluptates laboriosam asperiores! Nam, minus ullam
-                    iure nisi accusamus perferendis eum in ipsa laborum beatae
-                    error eos, natus dolore? Fugit?
-                  </p>
-                </div>
-                <div className="relative">
-                  <Image
-                    alt="item Image"
-                    src="/assets/Icons/remove.svg"
-                    width={60}
-                    height={60}
-                  />
-                </div>
-              </div>
-              <div className=" h-2/6 flex items-center px-2 w-full justify-between">
-                <div>
-                  <h1 className="text-xs font-bold">$14665</h1>
-                </div>
-                <div className=" w-1/4 h-full flex items-center justify-evenly p-2">
-                  <Image
-                    alt="item Image"
-                    src="/assets/Icons/add.svg"
-                    width={20}
-                    height={20}
-                  />
-
-                  <div>
-                    <h1 className="text-xs font-bold">2</h1>
-                  </div>
-                  <Image
-                    alt="item Image"
-                    src="/assets/Icons/minus.svg"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-              </div>
-            </div>
-            
-          </div>
-          <hr className="mt-2"/>
+     {cart.items.map((item)=>{
+return( <CartItem key={item.productId} item = {item}/>)
+     })}
+        
+        
         </div>
         <div className=" flex w-full flex-col space-y-2 p-2">
         <hr className="mt-1"/>
           <div className="flex items-center justify-between">
             <h1 className="text-xs font-bold">TOTAL INC TAX</h1>
-            <h1 className="text-xs font-bold">$1,245</h1>
+            <h1 className="text-xs font-bold">${cart.total}</h1>
           </div>
           <hr className="mt-1"/>
           <div className=" flex w-full justify-end mt-2">

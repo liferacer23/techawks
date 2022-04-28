@@ -23,6 +23,7 @@ export const getServerSideProps = async ({ params }) => {
               discount
               price
               unitsSold
+              description
               subCategoryId
               images{
         productId
@@ -185,7 +186,7 @@ export default function Product({ results, params }) {
               filter={filter}
               Items={
                 sort === "discount"
-                  ? data.sort((a, b) => (a.discount > b.discount ? 1 : -1))
+                  ? data.sort((a, b) => (b.discount > a.discount ? 1 : -1))
                   : sort === "best selling"
                   ? data.sort((a, b) => (b.unitsSold > a.unitsSold ? 1 : -1))
                   : sort === "increasing"
