@@ -4,7 +4,7 @@ import Checkout from "./Checkout";
 import { useDispatch, useSelector } from "react-redux";
 import { reset } from "../redux/cartSlice";
 export default function CartModal({ setCartFlipper }) {
-
+  
   const [checkout, setCheckout] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector((state)=>state.cart)

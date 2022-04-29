@@ -1,14 +1,39 @@
-import React from "react";
+
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItems } from "../redux/cartSlice";
+import { removeOrders } from "../redux/cartSlice";
+import { addOrders } from "../redux/cartSlice";
 export default function CartItem({ item }) {
   const [itemQuantity, setItemQuantity] = useState(item.quantity);
   const dispatch = useDispatch();
   //const cart = useSelector((state) => state.cart);
   //let productId = item.productId;
- 
+  const cart = useSelector((state)=>state.cart)
+  //console.log(cart);
+
+
+  useEffect(()=>{
+
+    dispatch(addOrders({...item,quantity:itemQuantity}));
+  },[])
+  useEffect(()=>{
+
+  
+    cart.orders.map((data)=>{
+      if(!data.name.includes(item.name)){
+        dispatch(addOrders({...item,quantity:itemQuantity}))
+      }
+      else if(data.name.includes(item.name)){
+        dispatch(removeOrders({item}))
+        dispatch(addOrders({...item,quantity:itemQuantity}))
+      }
+    })
+
+
+  },[item,itemQuantity])
+
   const DecItem = () => {
     if (itemQuantity < 0 || itemQuantity === 0) {
       setItemQuantity(1);
@@ -19,8 +44,9 @@ export default function CartItem({ item }) {
   const IncItem = () => {
     if (itemQuantity < 0 || itemQuantity === 0) {
       setItemQuantity(1);
-    }
+    }else if (itemQuantity > 0) {
     setItemQuantity((prev) => prev + 1);
+    }
   };
   const removeItem = () => {
     dispatch(removeItems({ item }));

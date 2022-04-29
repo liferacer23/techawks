@@ -2,6 +2,7 @@ import { useState,useEffect } from "react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { addItems } from "../redux/cartSlice";
+
 export default function Item({ product, quantity }) {
   const [added, setAdded] = useState(false);
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ export default function Item({ product, quantity }) {
     
     setAdded(true);
     dispatch(addItems({ ...product, quantity }));
+    
   };
   /* useEffect(() => {
     cart.items.map((item)=>{

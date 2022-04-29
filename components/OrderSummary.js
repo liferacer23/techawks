@@ -1,10 +1,14 @@
 import React from "react";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import OrderSummaryItem from "./OrderSummaryItem";
 export default function OrderSummary({
   setOrderSummary,
   setCartFlipper,
   setCheckout,
 }) {
+
+  const cart = useSelector((state) => state.cart);
   const closer = () => {
     setCartFlipper(false);
     setOrderSummary(false);
@@ -85,93 +89,19 @@ export default function OrderSummary({
               <div className="w-full flex justify-end p-2 mx-5">
                 <div className="flex justify-between  w-3/6 h-full ">
                   <h1 className="text-xs font-bold text-gray-500">TOTAL</h1>
-                  <h1 className="text-xs font-bold text-black">$5444</h1>
+                  <h1 className="text-xs font-bold text-black">${cart.total}</h1>
                 </div>
               </div>
             </div>
             <hr />
             <div className="  w-full h-fit overflow-y-auto">
-              <div className=" flex p-2 justify-between w-full  h-fit mb-4">
-                <div className="relative w-28 h-28 rounded-xl">
-                  <Image
-                    className="rounded-xl"
-                    src="/assets/girl/girl.png"
-                    alt="cart item"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                  <span className=" flex justify-center items-center text-xxs text-white h-3.5 w-3.5 rounded-full -top-1 -right-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 absolute">
-                    3
-                  </span>
-                </div>
-
-                <div className="flex h-full justify-start w-3/6  ">
-                  <div className="flex flex-col w-5/6">
-                    <h1 className="text-xs font-bold">ONYX WOOD CHAIR</h1>
-                    <p className="text-xxs mt-1 w-4/6 font-semibold ">
-                      Lorem ipsum dolorpedita doloribus nobis itaque blanditiis,
-                      quas, enim quibusdam eaque numquam?
-                    </p>
-                  </div>
-                  <div className="flex flex-col-p-2 justify-start">
-                    <h1 className="text-xs font-bold">$2323</h1>
-                  </div>
-                </div>
-              </div>
-              <div className=" flex p-2 justify-between w-full  h-fit mb-4">
-                <div className="relative w-28 h-28 rounded-xl">
-                  <Image
-                    className="rounded-xl"
-                    src="/assets/girl/girl.png"
-                    alt="cart item"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                  <span className=" flex justify-center items-center text-xxs text-white h-3.5 w-3.5 rounded-full -top-1 -right-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 absolute">
-                    3
-                  </span>
-                </div>
-
-                <div className=" flex h-full justify-start w-3/6  ">
-                  <div className="flex flex-col w-5/6">
-                    <h1 className="text-xs font-bold">ONYX WOOD CHAIR</h1>
-                    <p className="text-xxs mt-1 w-4/6 font-semibold ">
-                      Lorem ipsum dolorpedita doloribus nobis itaque blanditiis,
-                      quas, enim quibusdam eaque numquam?
-                    </p>
-                  </div>
-                  <div className="flex flex-col-p-2 justify-start">
-                    <h1 className="text-xs font-bold">$2323</h1>
-                  </div>
-                </div>
-              </div>
-              <div className=" flex p-2 justify-between w-full  h-fit mb-4">
-                <div className="relative w-28 h-28 rounded-xl">
-                  <Image
-                    className="rounded-xl"
-                    src="/assets/girl/girl.png"
-                    alt="cart item"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                  <span className=" flex justify-center items-center text-xxs text-white h-3.5 w-3.5 rounded-full -top-1 -right-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 absolute">
-                    3
-                  </span>
-                </div>
-
-                <div className=" flex h-full justify-start w-3/6  ">
-                  <div className="flex flex-col w-5/6">
-                    <h1 className="text-xs font-bold">ONYX WOOD CHAIR</h1>
-                    <p className="text-xxs mt-1 w-4/6 font-semibold ">
-                      Lorem ipsum dolorpedita doloribus nobis itaque blanditiis,
-                      quas, enim quibusdam eaque numquam?
-                    </p>
-                  </div>
-                  <div className="flex flex-col-p-2 justify-start">
-                    <h1 className="text-xs font-bold">$2323</h1>
-                  </div>
-                </div>
-              </div>
+             {cart.items.map((item)=>{
+return(
+<OrderSummaryItem key={item.productId} item={item}/>
+)
+             })}
+            
+       
               <hr className="mx-12" />
             </div>
           </div>

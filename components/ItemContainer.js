@@ -1,11 +1,11 @@
 import React from "react";
-import Image from "next/image";
 import { gql  } from "@apollo/client";
 import Item from "./Item";
+import { useState } from "react";
 export default function ItemContainer({ search, Items, filter }) {
   //console.log(Items);
  
-  const quantity = 1;
+  const [quantity,setQuantity]=useState(1);
 const ORDER_QUERY = gql`
 mutation  {
   createOrder(input:{customerEmailPhone:"binyamg23@gmail.com",country:"ethiopia",customerFullName:"Tracy Mac",customerCity:"mekanisa",customerAddress1:"addis ababa",zipCode:"11655",customerAddress2:"mekanjs"
