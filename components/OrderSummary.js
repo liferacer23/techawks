@@ -2,20 +2,28 @@ import React from "react";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import OrderSummaryItem from "./OrderSummaryItem";
+import {motion} from "framer-motion"
 export default function OrderSummary({
+  data,
   setOrderSummary,
   setCartFlipper,
   setCheckout,
+  total,
+  orders
 }) {
-
+  const date = new Date();
+  
+  const deliveryDate = new Date(date.getFullYear(), date.getMonth() + 1, 12);
   const cart = useSelector((state) => state.cart);
+  console.log(data);
+ // console.log(cart);
   const closer = () => {
     setCartFlipper(false);
     setOrderSummary(false);
     setCheckout(false);
   };
   return (
-    <div className="flex flex-col absolute bg-white inset-0 ">
+    <motion.div animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} transition={{duration:1}} className="flex flex-col absolute bg-white inset-0 ">
       <div className="mx-5 h-fit">
         <div className="w-full h-16 flex items-center justify-start p-2">
           <Image
@@ -71,7 +79,7 @@ export default function OrderSummary({
                 EST DELIVERY DATE
               </h1>
               <div className=" w-3/6 flex justify-start items-center">
-                <h1 className="text-xs font-bold text-black">18 April 2022</h1>
+                <h1 className="text-xs font-bold text-black">{deliveryDate.toDateString()}</h1>
               </div>
             </div>
             <div className="flex w-full p-2 justify-between">
@@ -89,15 +97,15 @@ export default function OrderSummary({
               <div className="w-full flex justify-end p-2 mx-5">
                 <div className="flex justify-between  w-3/6 h-full ">
                   <h1 className="text-xs font-bold text-gray-500">TOTAL</h1>
-                  <h1 className="text-xs font-bold text-black">${cart.total}</h1>
+                  <h1 className="text-xs font-bold text-black">${total}</h1>
                 </div>
               </div>
             </div>
             <hr />
             <div className="  w-full h-fit overflow-y-auto">
-             {cart.items.map((item)=>{
+             {orders.map((item)=>{
 return(
-<OrderSummaryItem key={item.productId} item={item}/>
+<OrderSummaryItem total={total} key={item.productId} item={item}/>
 )
              })}
             
@@ -121,6 +129,6 @@ return(
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { addItems } from "../redux/cartSlice";
+import {motion} from "framer-motion";
 
 export default function Item({ product, quantity }) {
   const [added, setAdded] = useState(false);
@@ -36,7 +37,7 @@ export default function Item({ product, quantity }) {
   } ,[cart.items, product.productId]) */
 
   return (
-    <div className="w-56 shadow-3xl h-76 flex-col p-3 rounded-xl space-y-2">
+    <motion.div transition={{duration:0.5}} layout animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} className="w-56 shadow-3xl h-76 flex-col p-3 rounded-xl space-y-2">
       <div className="relative rounded-xl h-56 w-full">
         <Image
           className="rounded-xl"
@@ -72,19 +73,19 @@ export default function Item({ product, quantity }) {
             {
               <div className="invisible hover:visible">
                 {" "}
-                <Image
+            {/*     <Image
                   alt="button image"
                   width={10}
                   height={10}
                   src={`/assets/Icons/${
                     added ? "arrow.right.filled.svg" : "arrow.left.svg"
                   }`}
-                />
+                /> */}
               </div>
             }
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

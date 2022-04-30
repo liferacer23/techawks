@@ -3,7 +3,7 @@ import { gql /* useQuery */ } from "@apollo/client";
 import client from "../../../apolloClient";
 import ProductsLayout from "../../../components/ProductsLayout";
 import ItemContainer from "../../../components/ItemContainer";
-
+import { AnimatePresence, motion } from "framer-motion";
 export const getServerSideProps = async ({ params }) => {
   const categoryId = params.product.toString();
 
@@ -179,24 +179,25 @@ export default function Product({ results, params }) {
             </div>
             {/* Body Right */}
           </div>
-          <div className="flex h-full p-2 w-5/6">
-            <ItemContainer
-              search={search}
-              setFilter={setFilter}
-              filter={filter}
-              Items={
-                sort === "discount"
-                  ? data.sort((a, b) => (b.discount > a.discount ? 1 : -1))
-                  : sort === "best selling"
-                  ? data.sort((a, b) => (b.unitsSold > a.unitsSold ? 1 : -1))
-                  : sort === "increasing"
-                  ? data.sort((a, b) => (a.price > b.price ? 1 : -1))
-                  : sort === "decreasing"
-                  ? data.sort((a, b) => (b.price > a.price ? 1 : -1))
-                  : data
-              }
-            />
-          </div>
+       
+          
+              <ItemContainer
+                search={search}
+                setFilter={setFilter}
+                filter={filter}
+                Items={
+                  sort === "discount"
+                    ? data.sort((a, b) => (b.discount > a.discount ? 1 : -1))
+                    : sort === "best selling"
+                    ? data.sort((a, b) => (b.unitsSold > a.unitsSold ? 1 : -1))
+                    : sort === "increasing"
+                    ? data.sort((a, b) => (a.price > b.price ? 1 : -1))
+                    : sort === "decreasing"
+                    ? data.sort((a, b) => (b.price > a.price ? 1 : -1))
+                    : data
+                }
+              />
+           
         </div>
       </div>
     </>

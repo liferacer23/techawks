@@ -2,6 +2,7 @@ import React from "react";
 import { gql  } from "@apollo/client";
 import Item from "./Item";
 import { useState } from "react";
+import {AnimatePresence, motion} from "framer-motion";
 export default function ItemContainer({ search, Items, filter }) {
   //console.log(Items);
  
@@ -17,7 +18,8 @@ mutation  {
 
 }`;
   return (
-    <div className="h-full w-full flex flex-wrap gap-8 p-1">
+   
+    <motion.div layout animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} className="h-full w-full flex flex-wrap gap-8 p-1">
       {Items.filter((res) => {
         if (search === "") {
           if (filter.length === 0) {
@@ -39,9 +41,13 @@ mutation  {
         }
       }).map((product) => {
         return (
+          // eslint-disable-next-line react/jsx-key
+          <AnimatePresence>
           <Item key={product.productId} quantity={quantity} product={product}/>
+          </AnimatePresence>
         );
       })}
-    </div>
+    </motion.div>
+   
   );
 }

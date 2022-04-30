@@ -3,6 +3,7 @@ import CartItem from "./CartItem";
 import Checkout from "./Checkout";
 import { useDispatch, useSelector } from "react-redux";
 import { reset } from "../redux/cartSlice";
+import {motion,AnimatePresence} from "framer-motion"
 export default function CartModal({ setCartFlipper }) {
   const cart = useSelector((state)=>state.cart);
   const [checkout, setCheckout] = useState(false);
@@ -45,21 +46,28 @@ export default function CartModal({ setCartFlipper }) {
     }
   }
   return (
-    <div className="z-50 fixed inset-0">
-      <div
+    
+    
+    <motion.div animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} transition={{duration:1}} className="z-50 fixed inset-0">
+      <motion.div
+      animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} transition={{duration:1}}
         onClick={(e) => {
           cartHandler(e);
         }}
         className="fixed inset-0 bg-gray-800 bg-opacity-50 overflow-y-auto h-full w-full"
-      ></div>
-      <div className={`${checkout?"hidden":""} overflow-y-auto overflow-x-hidden absolute bg-white top-0 right-0 h-full z-50 w-3/5 flex flex-col p-2 items-center px-14`} >
+      >
+
+      </motion.div>
+    
+      <AnimatePresence>
+      <motion.div key={"cart"} animate={{x:0}} initial={{x:800}} exit={{x:800}} transition={{duration:1}} className={`${checkout?"hidden":""} overflow-y-auto overflow-x-hidden absolute bg-white top-0 right-0 h-full z-50 w-3/5 flex flex-col p-2 items-center px-14`} >
         <div className="flex w-full h-16 justify-end items-center p-2">
           <div  onClick={() => {
-                setCartFlipper((prev) => !prev);
-              }} className="relative cursor-pointer flex items-center justify-between w-24 h-8 border-2 border-gray-200 rounded-2xl px-4">
+            setCartFlipper((prev) => !prev);
+          }} className="relative cursor-pointer flex items-center justify-between w-24 h-8 border-2 border-gray-200 rounded-2xl px-4">
             <button
              
-              className="text-xs text-black font-bold cursor-pointer rounded-2xl h-8 w-1/6 "
+             className="text-xs text-black font-bold cursor-pointer rounded-2xl h-8 w-1/6 "
             >
               Close
             </button>
@@ -75,8 +83,8 @@ export default function CartModal({ setCartFlipper }) {
           </div>
           {/* /////////////////////////// */}
      {cart.items.map((item)=>{
-return( <CartItem key={item.productId} item = {item}/>)
-     })}
+       return( <CartItem key={item.productId} item = {item}/>)
+      })}
         
         
         </div>
@@ -98,9 +106,13 @@ return( <CartItem key={item.productId} item = {item}/>)
               </div>
           </div>
         </div>
-      </div>
+      </motion.div>
+        </AnimatePresence>
+   
       {checkout?<Checkout orders={orders} setCartFlipper={setCartFlipper} setCheckout={setCheckout}/>:""}
-    </div>
+    </motion.div>
     
-  );
-}
+    
+    );
+  }
+  
