@@ -3,11 +3,13 @@ import Image from "next/image";
 import CheckoutItem from "./CheckoutItem";
 import OrderSummary from "./OrderSummary";
 import { useSelector } from "react-redux";
-export default function Checkout({ setCheckout, setCartFlipper }) {
+export default function Checkout({ orders, setCheckout, setCartFlipper }) {
   const [orderSummary, setOrderSummary] = useState(false);
+  //const [total,setTotal] = useState(0);
+  let price = 0;
 
   const cart = useSelector((state) => state.cart);
-
+ console.log(orders);
   return (
     <>
       <div className="flex w-screen h-screen flex-col absolute bg-white inset-0 ">
@@ -87,7 +89,7 @@ export default function Checkout({ setCheckout, setCartFlipper }) {
               </div>
               <div className="flex flex-col space-y-2 p-2  pb-5 shadow-xl shadow-3xl justify-center rounded-xl w-4/6">
                <div className=" overflow-y-auto">
-                {cart.items.map((item) => {
+                {orders.map((item) => {
                   return <CheckoutItem key={item.productId} item={item} />;
                 })}
 </div>
@@ -97,7 +99,11 @@ export default function Checkout({ setCheckout, setCartFlipper }) {
                       SUBTOTAL
                     </h1>
                     <h1 className="font-xs font-bold text-xs font-bold">
-                      ${cart.total}
+                      ${orders.map((item)=>{
+                        
+                       price = price + ( parseInt(item.quantity,10)* parseInt(item.price,10))
+                        
+                      })}{price}
                     </h1>
                   </div>
                   <div className="flex justify-between p-2 mb-5 mx-12">
@@ -112,7 +118,7 @@ export default function Checkout({ setCheckout, setCartFlipper }) {
                       TOTAL
                     </h1>
                     <h1 className="font-xs text-xs font-bold">
-                      USD ${cart.total}
+                      USD ${price}
                     </h1>
                   </div>
                 </div>

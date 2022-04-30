@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { addItems } from "../redux/cartSlice";
@@ -6,11 +6,20 @@ import { addItems } from "../redux/cartSlice";
 export default function Item({ product, quantity }) {
   const [added, setAdded] = useState(false);
   const dispatch = useDispatch();
-  const cart = useSelector((state)=>state.cart)
+  const cart = useSelector((state) => state.cart);
+
+  
   const addToCart = () => {
-    
-    setAdded(true);
     dispatch(addItems({ ...product, quantity }));
+    if (
+      cart.items.map((item) => {
+        return item.name.includes(product.name);
+      })
+    ) {
+      setAdded(true);
+    } else {
+      setAdded(false);
+    }
     
   };
   /* useEffect(() => {
@@ -54,7 +63,7 @@ export default function Item({ product, quantity }) {
             }}
             disabled={added}
             className={`flex items-center justify-around px-12 cursor-pointer text-xs  ${
-                added
+              added
                 ? "border-2 border-gray-300 font-semibold bg-white text-black"
                 : "bg-black text-white"
             } rounded-2xl h-8 w-full`}

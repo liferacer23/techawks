@@ -4,11 +4,26 @@ import Checkout from "./Checkout";
 import { useDispatch, useSelector } from "react-redux";
 import { reset } from "../redux/cartSlice";
 export default function CartModal({ setCartFlipper }) {
-  
+  const cart = useSelector((state)=>state.cart);
   const [checkout, setCheckout] = useState(false);
+  const [orders, setOrders] = useState();
   const dispatch = useDispatch();
-  const cart = useSelector((state)=>state.cart)
-  console.log(cart);
+  
+
+
+
+  const ordersSet =()=>{
+    /* let number = cart.items.length
+    let index = cart.orders.length-cart.items.length */
+   setOrders(cart.orders)
+   const uniqueAddresses = Array.from(new Set(cart.orders.map(a => a.productId)))
+ .map(productId => {
+   return cart.orders.find(a => a.productId === productId)
+ })
+ setOrders(uniqueAddresses);
+   //console.log(orders);
+   setCheckout(prev=>!prev);
+  }
   const cartHandler = (e) => {
     e.stopPropagation();
     setCartFlipper((prev) => !prev);
@@ -78,13 +93,13 @@ return( <CartItem key={item.productId} item = {item}/>)
                 <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{clearCart()}} className="border-2 border-gray-500 rounded-full text-black font-bold text-xs h-9 w-36">CLEAR CART</button>    </div>
                 <div className="flex space-x-2"> 
                 <button onClick={()=>{setCartFlipper(prev=>!prev)}} className="border-2 border-gray-500 rounded-full text-black font-bold text-xs h-9 w-48">CONTINUE SHOPPING</button>
-                <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{setCheckout(prev=>!prev)}}className="border-2 border-black-500 rounded-full text-white text-xs bg-black  h-9 w-48">PROCESS TO CHECKOUT</button>
+                <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{ordersSet()}}className="border-2 border-black-500 rounded-full text-white text-xs bg-black  h-9 w-48">PROCESS TO CHECKOUT</button>
                 </div>
               </div>
           </div>
         </div>
       </div>
-      {checkout?<Checkout setCartFlipper={setCartFlipper} setCheckout={setCheckout}/>:""}
+      {checkout?<Checkout orders={orders} setCartFlipper={setCartFlipper} setCheckout={setCheckout}/>:""}
     </div>
     
   );

@@ -1,6 +1,9 @@
-import React from 'react'
+import {useState} from 'react'
 import Image from 'next/image';
 export default function CheckoutItem({item}) {
+  const price = item.price * item.quantity;
+  const [finalPrice,setFinalPrice]=useState(price);
+  
   return (
     <><div className=" flex p-2 justify-evenly h-fit mb-4">
           <div className="relative w-28 h-28 rounded-xl">
@@ -14,7 +17,7 @@ export default function CheckoutItem({item}) {
               <p className="text-xxs font-semibold ">{item.description}</p>
           </div>
           <div className="flex flex-col-p-2 justify-start">
-              <h1 className="text-xs font-bold">${item.price}</h1>
+              <h1 className="text-xs font-bold">${item.price} x {item.quantity} = {finalPrice}</h1>
           </div>
 
       </div><hr className='mx-12' /></>
