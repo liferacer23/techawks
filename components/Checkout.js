@@ -118,7 +118,7 @@ export default function Checkout({ orders, setCheckout, setCartFlipper }) {
                       TOTAL
                     </h1>
                     <h1 className="font-xs text-xs font-bold">
-                      USD ${price}
+                      USD ${parseInt(price)+50}
                     </h1>
                   </div>
                 </div>
