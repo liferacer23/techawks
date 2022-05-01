@@ -11,9 +11,9 @@ export default function Layout({ children }) {
   const [cartFlipper, setCartFlipper] = useState(false);
   const router = useRouter();
   return (
-    <div>
+    <>
       <nav className="sticky top-0 z-40 flex w-screen h-20">
-        <div className=" flex p-2 justify-between items-center mx-5 bg-white w-full">
+        <div className=" flex p-2 justify-between items-center bg-white w-full">
         <div className="ml-6 cursor-pointer">
           <Image
             src="/assets/Icons/logo.svg"
@@ -98,6 +98,6 @@ export default function Layout({ children }) {
         <CartModal cartFlipper={cartFlipper} setCartFlipper={setCartFlipper} />
       ) : null}
     </AnimatePresence>
-    </div>
+    </>
   );
 }
