@@ -66,7 +66,7 @@ export default function Checkout({ orders, setCheckout, setCartFlipper }) {
   
   return (
     <>
-      <motion.div animate={{x:0}} initial={{x:800}} exit={{x:800}} transition={{duration:1}} className="flex w-screen h-screen flex-col absolute bg-white inset-0 ">
+      <motion.div animate={{x:0,opacity:1}} initial={{x:800,opacity:0}} exit={{x:800,opacity:0}} transition={{duration:1}} className="flex w-screen h-screen flex-col absolute bg-white inset-0 ">
         <div className="mx-5 w-full h-5/6">
           <div className="w-full h-16 flex items-center justify-start p-2">
             <Image
@@ -249,8 +249,8 @@ export default function Checkout({ orders, setCheckout, setCartFlipper }) {
           </div>
         </div>
       </motion.div>
+      <AnimatePresence>
       {orderSummary ? (
-        <AnimatePresence>
         <OrderSummary
         key={"orderSummary"}
         data={data}
@@ -260,10 +260,10 @@ export default function Checkout({ orders, setCheckout, setCartFlipper }) {
           setCheckout={setCheckout}
           setOrderSummary={setOrderSummary}
         />
-        </AnimatePresence>
-      ) : (
-        ""
-      )}
+        ) : (
+          ""
+          )}
+          </AnimatePresence>
     </>
   );
 }

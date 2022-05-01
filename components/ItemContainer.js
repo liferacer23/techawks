@@ -19,7 +19,7 @@ mutation  {
 }`;
   return (
    
-    <motion.div layout animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} className="h-full w-full flex flex-wrap gap-8 p-1">
+    <motion.div layout  className="h-full w-full flex flex-wrap gap-8 p-1">
       {Items.filter((res) => {
         if (search === "") {
           if (filter.length === 0) {

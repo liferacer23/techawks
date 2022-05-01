@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeItems } from "../redux/cartSlice";
 import { removeOrders } from "../redux/cartSlice";
 import { addOrders } from "../redux/cartSlice";
+import { motion } from "framer-motion";
 export default function CartItem({ item }) {
   const [itemQuantity, setItemQuantity] = useState(item.quantity);
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ export default function CartItem({ item }) {
   };
 
   return (
-    <div className=" flex space-x-3 p-2">
+    <motion.div transition={{duration:0.5}} layout animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} className=" flex space-x-3 p-2">
       <div className=" w-2/6 relative w-36 h-40 rounded-xl">
         <Image
           className="rounded-xl"
@@ -110,6 +111,6 @@ export default function CartItem({ item }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

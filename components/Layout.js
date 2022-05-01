@@ -4,6 +4,7 @@ import CartModal from "./CartModal";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import {useSelector } from "react-redux";
+import {motion,AnimatePresence} from "framer-motion"
 export default function Layout({ children }) {
 
   const cart = useSelector((state)=>state.cart)
@@ -66,13 +67,13 @@ export default function Layout({ children }) {
               setCartFlipper((prev) => !prev);
             }}
             className=" relative h-9 w-9 cursor-pointer flex justify-center items-center border-2 border-grey-500 rounded-full"
-          >
+            >
             <Image
               src="/assets/Icons/bag.svg"
               alt="cart bag"
               width={15}
               height={15}
-            />
+              />
             <span className=" flex justify-center items-center text-xxs font-bold text-white h-3.5 w-3.5 rounded-full top-0 -right-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 absolute">
              {cart.items.length}
             </span>
@@ -84,7 +85,7 @@ export default function Layout({ children }) {
               alt="Profile picture"
               layout="fill"
               objectFit="cover"
-            />
+              />
           </div>
         </div>
         </div>
@@ -92,9 +93,11 @@ export default function Layout({ children }) {
 
       {children}
       <footer></footer>
+      <AnimatePresence>
       {cartFlipper ? (
         <CartModal cartFlipper={cartFlipper} setCartFlipper={setCartFlipper} />
       ) : null}
+    </AnimatePresence>
     </div>
   );
 }

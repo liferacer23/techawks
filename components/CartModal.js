@@ -48,8 +48,8 @@ export default function CartModal({ setCartFlipper }) {
   return (
     
     
-    <motion.div animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} transition={{duration:1}} className="z-50 fixed inset-0">
-      <motion.div
+    <motion.div animate={{opacity:1}} layout initial={{opacity:0}} exit={{opacity:0}} transition={{duration:1}} className="z-50 fixed inset-0">
+      <div
       animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} transition={{duration:1}}
         onClick={(e) => {
           cartHandler(e);
@@ -57,10 +57,10 @@ export default function CartModal({ setCartFlipper }) {
         className="fixed inset-0 bg-gray-800 bg-opacity-50 overflow-y-auto h-full w-full"
       >
 
-      </motion.div>
+      </div>
     
-      <AnimatePresence>
-      <motion.div key={"cart"} animate={{x:0}} initial={{x:800}} exit={{x:800}} transition={{duration:1}} className={`${checkout?"hidden":""} overflow-y-auto overflow-x-hidden absolute bg-white top-0 right-0 h-full z-50 w-3/5 flex flex-col p-2 items-center px-14`} >
+      
+      <motion.div key={"cart"} animate={{x:0,opacity:1}} initial={{x:800,opacity:0}} exit={{x:800,opacity:0}} transition={{duration:0.7}} className={`${checkout?"hidden":""} overflow-y-auto overflow-x-hidden absolute bg-white top-0 right-0 h-full z-50 w-3/5 flex flex-col p-2 items-center px-14`} >
         <div className="flex w-full h-16 justify-end items-center p-2">
           <div  onClick={() => {
             setCartFlipper((prev) => !prev);
@@ -83,7 +83,10 @@ export default function CartModal({ setCartFlipper }) {
           </div>
           {/* /////////////////////////// */}
      {cart.items.map((item)=>{
-       return( <CartItem key={item.productId} item = {item}/>)
+       // eslint-disable-next-line react/jsx-key
+       return( <AnimatePresence>
+         <CartItem key={item.productId} item = {item}/>
+         </AnimatePresence>)
       })}
         
         
@@ -107,9 +110,12 @@ export default function CartModal({ setCartFlipper }) {
           </div>
         </div>
       </motion.div>
-        </AnimatePresence>
-   
-      {checkout?<Checkout orders={orders} setCartFlipper={setCartFlipper} setCheckout={setCheckout}/>:""}
+        
+      <AnimatePresence>
+      {checkout?
+        <Checkout orders={orders} setCartFlipper={setCartFlipper} setCheckout={setCheckout}/>
+       :""} 
+       </AnimatePresence>
     </motion.div>
     
     

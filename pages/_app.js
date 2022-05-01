@@ -4,13 +4,17 @@ import client from "../apolloClient";
 import { Provider } from "react-redux";
 import store from "../redux/store";
 import Layout from "../components/Layout";
-import { AnimatePresence } from "framer-motion";
-function MyApp({ Component, pageProps }) {
+import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
+function MyApp({ Component, pageProps, router }) {
   return (
     <ApolloProvider client={client}>
       <Provider store={store}>
         <Layout>
-          <Component {...pageProps} />
+          <LazyMotion features={domAnimation}>
+            <AnimatePresence exitBeforeEnter>
+              <Component {...pageProps} key={router.route} />
+            </AnimatePresence>
+          </LazyMotion>
         </Layout>
       </Provider>
     </ApolloProvider>

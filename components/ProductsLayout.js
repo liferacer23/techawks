@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
 import { useRouter } from "next/router";
-import { useState } from "react";
-
+import { motion } from "framer-motion";
 export default function ProductsLayout({setSearch,results }) {
   /*   const { data, loading, error } = useQuery(QUERY);*/
   //const [searchItem, setSearchItem] = useState("");
   const router = useRouter();
+  const element=useRef();
   //console.log(results);
-  // console.log(router);
-
+  // console.log(element);
+  
   return (
     //BODY
     <>
@@ -49,7 +50,7 @@ export default function ProductsLayout({setSearch,results }) {
                     <div className="p-1 flex flex-col space-y-2 items-center">
                       <span className={`cursor-pointer ${payload.categoryId === router.query.product ? "text-black" : ""}`}>{payload.name}</span>
                       {payload.categoryId === router.query.product ? (
-                        <span className="bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></span>
+                        <motion.span ref={element} animate={{x:0}} initial={{x:0}} exit={{x:0}} transition={{duration:0.5}} className="bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></motion.span>
                       ) : (
                         ""
                       )}

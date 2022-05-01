@@ -1,7 +1,11 @@
 import Head from 'next/head'
-
-
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import {motion,AnimatePresence} from 'framer-motion'
 export default function Home() {
+
+  const [selectedId, setSelectedId] = useState(false)
+  const cart = useSelector((state) => state.cart);
   return (
     <div>
       <Head>
@@ -10,6 +14,26 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Welcome to the home page we are under construction please navigate to the products :)</h1>
+   
+   
+
+ 
+ 
+   <motion.div layoutId={"as,d;l"} onClick={() => setSelectedId(prev=>!prev)}>
+     <motion.h5>a,lds;</motion.h5>
+     <motion.h2>as,dl;,d</motion.h2>
+   </motion.div>
+
+ 
+ <AnimatePresence>
+   {selectedId && (
+     <motion.div layoutId={selectedId}>
+       <motion.h5>asdlsdpasd</motion.h5>
+       <motion.h2>asd,sal,dklsadk</motion.h2>
+       <motion.button onClick={() => setSelectedId(prev=>!prev)} />
+     </motion.div>
+   )}
+ </AnimatePresence>
     </div>
   )
 }

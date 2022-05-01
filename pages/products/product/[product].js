@@ -82,7 +82,8 @@ export default function Product({ results, params }) {
     //BODY
     <>
       <ProductsLayout setSearch={setSearch} results={results} />
-      <div className=" h-full pt-2 mx-8">
+      <motion.div animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} transition={{duration:1}} className=" h-full pt-2 mx-8">
+    <AnimatePresence>
         <div className="flex space-x-4 w-full h-full">
           <div className="sticky left-0 top-[198px] h-100 overflow-y-scroll w-1/6 flex flex-col space-y-3">
             {/* Left Container */}
@@ -180,7 +181,6 @@ export default function Product({ results, params }) {
             {/* Body Right */}
           </div>
        
-          
               <ItemContainer
                 search={search}
                 setFilter={setFilter}
@@ -199,7 +199,8 @@ export default function Product({ results, params }) {
               />
            
         </div>
-      </div>
+              </AnimatePresence>
+      </motion.div>
     </>
   );
 }

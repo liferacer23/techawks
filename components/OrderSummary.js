@@ -23,7 +23,7 @@ export default function OrderSummary({
     setCheckout(false);
   };
   return (
-    <motion.div animate={{x:0}} initial={{x:800}} exit={{x:800}} transition={{duration:1}} className="flex flex-col absolute bg-white inset-0 ">
+    <motion.div animate={{x:0,opacity:1}} initial={{x:800,opacity:0}} exit={{x:800,opacity:0}} transition={{duration:1}} className="flex flex-col absolute bg-white inset-0 ">
       <div className="mx-5 h-fit">
         <div className="w-full h-16 flex items-center justify-start p-2">
           <Image
