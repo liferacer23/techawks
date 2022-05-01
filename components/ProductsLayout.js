@@ -1,16 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef,useState,useEffect } from "react";
 import { useRouter } from "next/router";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 export default function ProductsLayout({setSearch,results }) {
   /*   const { data, loading, error } = useQuery(QUERY);*/
   //const [searchItem, setSearchItem] = useState("");
   const router = useRouter();
   const element=useRef();
-  //console.log(results);
-  // console.log(element);
+  const [x, setX] = useState();
   
+  //console.log(results);
+  //console.log(element.current.offsetLeft);
+  const getPosition = () => {
+    const x = element.current.offsetLeft;
+    setX(x);
+    
+    console.log(x)
+    
+  };
+
+  // Get the position of the red box in the beginning
+  useEffect(() => {
+    getPosition();
+  }, []);
   return (
     //BODY
     <>
@@ -47,13 +60,15 @@ export default function ProductsLayout({setSearch,results }) {
                     href={`/products/product/${payload.categoryId}`}
                     passHref
                   >
-                    <div className="p-1 flex flex-col space-y-2 items-center">
-                      <span className={`cursor-pointer ${payload.categoryId === router.query.product ? "text-black" : ""}`}>{payload.name}</span>
+                    <div ref={element} onClick={()=>{setX(element.current.offsetLeft)}} className="p-1 flex flex-col space-y-2 items-center">
+                      <span  className={`cursor-pointer ${payload.categoryId === router.query.product ? "text-black" : ""}`}>{payload.name}</span>
+                      <AnimatePresence>
                       {payload.categoryId === router.query.product ? (
-                        <motion.span ref={element} animate={{x:0}} initial={{x:0}} exit={{x:0}} transition={{duration:0.5}} className="bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></motion.span>
-                      ) : (
-                        ""
-                      )}
+                        <motion.span  animate={{x:x-900,opacity:1}} initial={{x:x,opacity:0}}  transition={{duration:1}} className="bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></motion.span>
+                        ) : (
+                          ""
+                          )}
+                          </AnimatePresence>
                     </div>
                   </Link>
                 );

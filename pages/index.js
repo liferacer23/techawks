@@ -18,22 +18,6 @@ export default function Home() {
    
 
  
- 
-   <motion.div layoutId={"as,d;l"} onClick={() => setSelectedId(prev=>!prev)}>
-     <motion.h5>a,lds;</motion.h5>
-     <motion.h2>as,dl;,d</motion.h2>
-   </motion.div>
-
- 
- <AnimatePresence>
-   {selectedId && (
-     <motion.div layoutId={selectedId}>
-       <motion.h5>asdlsdpasd</motion.h5>
-       <motion.h2>asd,sal,dklsadk</motion.h2>
-       <motion.button onClick={() => setSelectedId(prev=>!prev)} />
-     </motion.div>
-   )}
- </AnimatePresence>
     </div>
   )
 }
