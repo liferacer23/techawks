@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Water+Brush&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -29,7 +29,7 @@ a {
 
 * {
   box-sizing: border-box;
-  font-family:'SegUIVar'; 
+  font-family:'Noto Sans'; 
 }
 ::-webkit-scrollbar{
   width: 6px;
