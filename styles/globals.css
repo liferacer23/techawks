@@ -29,6 +29,7 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family:'SegUIVar';
 }
 ::-webkit-scrollbar{
   width: 6px;
