@@ -8,6 +8,9 @@ module.exports = {
       height: {
         '100': '25rem',
       },
+      fontFamily:{
+        Waterbrush:["Water Brush", "cursive"],
+      },
       boxShadow:{
         '3xl':'0 10px 20px rgba(0, 0, 0, 0.2)',
       },
