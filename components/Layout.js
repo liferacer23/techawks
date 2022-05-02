@@ -89,15 +89,17 @@ export default function Layout({ children }) {
       </nav>
 
       {children}
-      <footer className="mx-8 bg-gray-200 mt-3 space-evenly h-10 p-2">
+      <footer className="mx-8 bg-gray-100 mt-3 space-evenly h-20 p-2">
         <div className=" h-full flex justify-evenly items-center ">
-          <div className="h-full">
-            <Image src="/assets/Icons/logo.svg" width={80} height={20} />
+          <div className="h-15 flex w-fit p-2 items-center">
+            <Image src="/assets/Icons/logo.svg" width={100} height={60} />
           </div>
+          <div>
           <h1 className="text-black text-1xs">
           &copy;Allrights Reserved 2022,Addis Ababa,Ethiopia
           </h1>
-          <div className="h-full">
+          </div>
+          <div className="h-10 flex items-center">
             <Image src="/assets/social/facebook.svg" width={80} height={18} />
             <Image src="/assets/social/insta.png" width={20} height={18} />
             <Image src="/assets/social/twitter.svg" width={80} height={18} />

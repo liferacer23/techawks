@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import HomeSlider from "../components/HomeSlider";
+import Image from "next/image";
 export default function Home() {
   const [selectedId, setSelectedId] = useState(false);
   const cart = useSelector((state) => state.cart);
@@ -16,18 +17,22 @@ export default function Home() {
       <h1 className="text-5xl font-bold text-blue-300 font-Waterbrush text-center">
         Welcome to Shoplly
       </h1>
-      <h1 className="text-xl font-bold text-gray-500">Some of our Products and what we offer</h1>
+      <h1 className="font-medium leading-relaxed text-black-600 text-xl">
+        Some of our Products and what we offer
+      </h1>
       <HomeSlider />
 
       <div className="p-4">
-        <h1 className="text-xl font-bold text-gray-500 text center">About Us</h1>
-        <p className="text-xs italic">
-          Originally started to supplement a shoplly has grown into
-          the world's largest online auction site. You can find pretty much
-          anything here, and even you can become shoplly seller to get some cash
-          for your unwanted items. If you're looking for a collectible, this is
-          the first shopping website you should check, but you'll also find
-          brand-new items. shoplly offers a wide variety of categories ranging from
+        <h1 className="font-medium leading-relaxed text-black-600 text-xl text center">
+          About Us
+        </h1>
+        <p className=" font-medium leading-relaxed text-black-600">
+          Originally started to supplement a shoplly has grown into the world's
+          largest online auction site. You can find pretty much anything here,
+          and even you can become shoplly seller to get some cash for your
+          unwanted items. If you're looking for a collectible, this is the first
+          shopping website you should check, but you'll also find brand-new
+          items. shoplly offers a wide variety of categories ranging from
           appliances to video games. They also have seasonal gift guides and a
           Daily Deals page. You can use a variety of filters such as brand,
           price, size, color, features, and consumer ratings and reviews to sift
@@ -38,6 +43,50 @@ export default function Home() {
           ensures its consistently high ranking among shopping sites.
         </p>
       </div>
+      <div
+      className="max-w-screen-xl mt-0 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto"
+      id="feature"
+    >
+      <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-2 gap-8 py-8 my-12">
+        <div className="flex w-full justify-end">
+          <div className="h-full w-full p-4">
+            <Image
+              src="/assets/girl/home.png"
+              alt="VPN Illustrasi"
+              layout="responsive"
+              height={400}
+              width={408}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col items-end justify-center ml-auto w-full lg:w-9/12">
+          <h3 className="text-3xl lg:text-4xl font-medium leading-relaxed text-black-600">
+            We Provide Many Features You Can Use
+          </h3>
+          <p className="my-2 text-black-500">
+            You can explore the features that we provide with fun and have their
+            own functions each feature.
+          </p>
+          <ul className="text-black-500 self-start list-inside ml-8">
+            <li className="relative circle-check custom-list">
+              Electronics
+            </li>
+            <li className="relative circle-check custom-list">
+              Fashion and Beauty
+            </li>
+            <li className="relative circle-check custom-list">
+              Home, Garden and Kids
+            </li>
+            <li className="relative circle-check custom-list">
+              Vehicles.
+            </li>
+            <li className="relative circle-check custom-list">
+              Sports and Travel
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     </div>
   );
 }
