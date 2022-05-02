@@ -43,7 +43,7 @@ export default function Home() {
           ensures its consistently high ranking among shopping sites.
         </p>
       </div>
-      <div
+{/*       <div
       className="max-w-screen-xl mt-0 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto"
       id="feature"
     >
@@ -60,7 +60,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-col items-end justify-center ml-auto w-full lg:w-9/12">
-          <h3 className="text-3xl lg:text-4xl font-medium leading-relaxed text-black-600">
+          <h3 className="text-3xl lg:text-4xl font-medium text-black-600">
             We Provide Many Features You Can Use
           </h3>
           <p className="my-2 text-black-500">
@@ -84,7 +84,7 @@ export default function Home() {
               Sports and Travel
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
     </div>
