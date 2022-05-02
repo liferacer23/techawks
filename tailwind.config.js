@@ -10,6 +10,7 @@ module.exports = {
       },
       fontFamily:{
         Waterbrush:["Water Brush", "cursive"],
+        SegUIVar:["SegUIVar", "cursive"],
       },
       boxShadow:{
         '3xl':'0 10px 20px rgba(0, 0, 0, 0.2)',
