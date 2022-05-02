@@ -20,9 +20,9 @@ export default function Home() {
       <HomeSlider />
 
       <div className="p-4">
-        <h1 className="text-xl italic">About Us</h1>
+        <h1 className="text-xl font-bold text-gray-500 text center">About Us</h1>
         <p className="text-xs italic">
-          Originally started to supplement a Pez collectioshoplly has grown into
+          Originally started to supplement a shoplly has grown into
           the world's largest online auction site. You can find pretty much
           anything here, and even you can become shoplly seller to get some cash
           for your unwanted items. If you're looking for a collectible, this is
