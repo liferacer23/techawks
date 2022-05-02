@@ -17,9 +17,6 @@ export default function Home() {
       <h1 className="text-5xl font-bold text-blue-300 font-Waterbrush text-center">
         Welcome to Shoplly
       </h1>
-      <h1 className="font-medium leading-relaxed text-black-600 text-xl">
-        Our Products and What We Offer
-      </h1>
       <HomeSlider />
 
       <div className="p-4">
