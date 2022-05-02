@@ -15,6 +15,10 @@ export default function HomeSlider() {
     "/assets/home/6.png",
     "/assets/home/7.png",
     "/assets/home/8.png",
+    "/assets/home/9.png",
+    "/assets/home/10.png",
+    "/assets/home/11.png",
+    "/assets/home/12.png",
   ];
 
   useEffect(()=>{
@@ -26,14 +30,14 @@ setWidth(carousel.current.scrollWidth-carousel.current.offsetWidth);
       <motion.div drag="x"  dragConstraints={{right:0,left:-width}} className="flex absolute h-[430px]">
         {images.map((item, index) => {
           return (
-            <motion.div key={index} className="pointer-events-none p-3 min-w-[25rem] min-h-[40rem]">
+            <motion.div key={index} animate={{opacity:1}} initial={{opacity:0}} transition={{duration:0.8}} className="pointer-events-none p-3 min-w-[25rem] min-h-[40rem]">
               <Image
                 className=" w-full h-full rounded-xl"
                 key={index}
                 alt="images"
                 src={item}
-                width={400}
-                height={420}
+                width={410}
+                height={430}
               />
             </motion.div>
           );
