@@ -27,11 +27,11 @@ export default function Home() {
           About Us
         </h1>
         <p className=" font-medium leading-relaxed text-black-600">
-          Originally started to supplement a shoplly has grown into the world's
+          Originally started to supplement a shoplly has grown into the worlds
           largest online auction site. You can find pretty much anything here,
           and even you can become shoplly seller to get some cash for your
-          unwanted items. If you're looking for a collectible, this is the first
-          shopping website you should check, but you'll also find brand-new
+          unwanted items. If youre looking for a collectible, this is the first
+          shopping website you should check, but youll also find brand-new
           items. shoplly offers a wide variety of categories ranging from
           appliances to video games. They also have seasonal gift guides and a
           Daily Deals page. You can use a variety of filters such as brand,
@@ -39,7 +39,7 @@ export default function Home() {
           through your search results. Plus, the advanced search capabilities on
           shoplly make it easy to locate items with free shipping, new or used
           products, and Buy It Now items versus things being auctioned off. All
-          in all shoplly's reputation as a great bargain-shopping destination
+          in all shopllys reputation as a great bargain-shopping destination
           ensures its consistently high ranking among shopping sites.
         </p>
       </div>
