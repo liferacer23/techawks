@@ -93,9 +93,9 @@ export default function Layout({ children }) {
             </div>
           </div>
         </div>
-       <AnimatePresence>{hamburger?<Sidebar setHamburger={setHamburger}/>:""}</AnimatePresence> 
+      
       </nav>
-
+      <AnimatePresence>{hamburger?<Sidebar setHamburger={setHamburger}/>:""}</AnimatePresence> 
       {children}
       <footer className=" bg-gray-100 mt-3 h-20 p-2">
         <div className=" h-full flex justify-between items-center ">
