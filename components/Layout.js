@@ -5,9 +5,11 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
+import Sidebar from "./Sidebar";
 export default function Layout({ children }) {
   const cart = useSelector((state) => state.cart);
   const [cartFlipper, setCartFlipper] = useState(false);
+  const [hamburger, setHamburger] = useState(false);
   const router = useRouter();
   return (
     <>
@@ -21,7 +23,7 @@ export default function Layout({ children }) {
               height={100}
             />
           </div>
-          <div className="flex space-x-14 text-xs font-bold text-gray-500">
+          <div className="hidden md:block md:flex md:space-x-14 md:text-xs md:font-bold md:text-gray-500">
             <Link href="/">
               <div className="flex flex-col space-y-1 w-1/4 items-center justify-start p-1">
                 <span className="cursor-pointer ">Home</span>
@@ -51,7 +53,7 @@ export default function Layout({ children }) {
             </Link>
             <Link href="/about">
               <div className="flex flex-col space-y-1 w-1/4 items-center justify-start p-1">
-                <span className="cursor-pointer">about</span>
+                <span className="cursor-pointer">About</span>
                 {router.asPath == "/about" ? (
                   <span className=" bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></span>
                 ) : null}
@@ -84,19 +86,25 @@ export default function Layout({ children }) {
                 objectFit="cover"
               />
             </div>
+            <div onClick={()=>{setHamburger(prev=>!prev)}} className=" md:hidden h-9 w-9 p-1 cursor-pointer flex flex-col justify-center items-center">
+                <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 m-0.5 h-[2px] w-full"></div>
+                <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 m-0.5 h-[2px] w-full"></div>
+                <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 m-0.5 h-[2px] w-full"></div>
+            </div>
           </div>
         </div>
+       <AnimatePresence>{hamburger?<Sidebar setHamburger={setHamburger}/>:""}</AnimatePresence> 
       </nav>
 
       {children}
-      <footer className="mx-8 bg-gray-100 mt-3 space-evenly h-20 p-2">
-        <div className=" h-full flex justify-evenly items-center ">
+      <footer className=" bg-gray-100 mt-3 h-20 p-2">
+        <div className=" h-full flex justify-between items-center ">
           <div className="h-15 flex w-fit p-2 items-center">
             <Image alt ="image" src="/assets/Icons/logo.svg" width={100} height={60} />
           </div>
           <div>
           <h1 className="text-black text-1xs">
-          &copy;Allrights Reserved 2022,Addis Ababa,Ethiopia
+          &copy; Allrights Reserved 2022,Addis Ababa,Ethiopia
           </h1>
           </div>
           <div className="h-10 flex items-center">
