@@ -13,7 +13,7 @@ export default function Layout({ children }) {
   const router = useRouter();
   return (
     <>
-      <nav className="sticky top-0 z-40 flex w-screen h-20">
+      <nav className="relative sticky top-0 z-40 flex w-screen h-20">
         <div className=" flex p-2 justify-between items-center bg-white w-full">
           <div className="ml-6 cursor-pointer">
             <Image
@@ -90,13 +90,15 @@ export default function Layout({ children }) {
                 <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 m-0.5 h-[2px] w-full"></div>
                 <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 m-0.5 h-[2px] w-full"></div>
                 <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 m-0.5 h-[2px] w-full"></div>
+              
             </div>
           </div>
         </div>
       
       </nav>
-      <AnimatePresence>{hamburger?<Sidebar setHamburger={setHamburger}/>:""}</AnimatePresence> 
+      
       {children}
+
       <footer className=" bg-gray-100 mt-3 h-20 p-2">
         <div className=" h-full flex justify-between items-center ">
           <div className="h-15 flex w-fit p-2 items-center">
@@ -114,6 +116,7 @@ export default function Layout({ children }) {
           </div>
         </div>
       </footer>
+      <AnimatePresence>{hamburger?<Sidebar setHamburger={setHamburger}/>:""}</AnimatePresence> 
       <AnimatePresence>
         {cartFlipper ? (
           <CartModal
