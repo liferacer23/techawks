@@ -37,7 +37,7 @@ export default function Item({ product, quantity }) {
   } ,[cart.items, product.productId]) */
 
   return (
-    <motion.div transition={{duration:0.5}} layout animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} className="w-56 shadow-3xl h-76 flex-col p-3 rounded-xl space-y-2">
+    <motion.div transition={{duration:0.5}} layout animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} className="w-[300px] md:w-56 shadow-3xl h-76 flex-col p-3 rounded-xl space-y-2">
       <div className="relative rounded-xl h-56 w-full">
         <Image
           className="rounded-xl"

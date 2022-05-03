@@ -94,7 +94,7 @@ export default function Layout({ children }) {
             </div>
           </div>
         </div>
-      
+        <AnimatePresence>{hamburger?<Sidebar setHamburger={setHamburger}/>:""}</AnimatePresence> 
       </nav>
       
       {children}
@@ -116,7 +116,7 @@ export default function Layout({ children }) {
           </div>
         </div>
       </footer>
-      <AnimatePresence>{hamburger?<Sidebar setHamburger={setHamburger}/>:""}</AnimatePresence> 
+
       <AnimatePresence>
         {cartFlipper ? (
           <CartModal

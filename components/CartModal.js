@@ -60,8 +60,8 @@ export default function CartModal({ setCartFlipper }) {
       </div>
     
       
-      <motion.div key={"cart"} animate={{x:0,opacity:1}} initial={{x:800,opacity:0}} exit={{x:800,opacity:0}} transition={{duration:0.7}} className={`${checkout?"hidden":""} overflow-y-auto overflow-x-hidden absolute bg-white top-0 right-0 h-full z-50 w-3/5 flex flex-col p-2 items-center px-14`} >
-        <div className="flex w-full h-16 justify-end items-center p-2">
+      <motion.div animate={{x:0,opacity:1}} initial={{x:800,opacity:0}} exit={{x:800,opacity:0}} transition={{duration:0.7}} className={`${checkout?"hidden":""} overflow-y-auto overflow-x-hidden absolute bg-white top-0 right-0 h-full z-50 w-4/5 md:w-3/5 flex flex-col p-2 items-center px-5 md:px-14`} >
+        <div className="flex w-full h-10 md:h-16 justify-end items-center p-2">
           <div  onClick={() => {
             setCartFlipper((prev) => !prev);
           }} className="relative cursor-pointer flex items-center justify-between w-24 h-8 border-2 border-gray-200 rounded-2xl px-4">
@@ -101,10 +101,10 @@ export default function CartModal({ setCartFlipper }) {
           <div className=" flex w-full mt-2">
               <div className="flex w-full justify-between space-x-1">
                 <div>
-                <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{clearCart()}} className="border-2 border-gray-500 rounded-full text-black font-bold text-xs h-9 w-36">CLEAR CART</button>    </div>
+                <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{clearCart()}} className="border-2 border-gray-500 rounded-full text-black font-bold text-xxxs md:text-xs h-8 w-[80px] md:h-8 md:w-36">CLEAR CART</button>    </div>
                 <div className="flex space-x-2"> 
-                <button onClick={()=>{setCartFlipper(prev=>!prev)}} className="border-2 border-gray-500 rounded-full text-black font-bold text-xs h-9 w-48">CONTINUE SHOPPING</button>
-                <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{ordersSet()}}className="border-2 border-black-500 rounded-full text-white text-xs bg-black  h-9 w-48">PROCESS TO CHECKOUT</button>
+                <button onClick={()=>{setCartFlipper(prev=>!prev)}} className="border-2 border-gray-500 rounded-full text-black font-bold text-xxxs md:text-xs h-[30px] md:h-9  m:w-48">CONTINUE SHOPPING</button>
+                <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{ordersSet()}}className="border-2 border-black-500 rounded-full text-white text-xxxs md:text-xs bg-black h-8 md:h-9 md:w-48">PROCESS TO CHECKOUT</button>
                 </div>
               </div>
           </div>

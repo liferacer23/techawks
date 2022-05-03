@@ -56,7 +56,7 @@ export default function CartItem({ item }) {
 
   return (
     <motion.div transition={{duration:0.5}} layout animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} className=" flex space-x-3 p-2">
-      <div className=" w-2/6 relative w-36 h-40 rounded-xl">
+      <div className=" w-2/6 relative w-36 md:h-40 h-20 rounded-xl">
         <Image
           className="rounded-xl"
           alt="item Image"
@@ -65,13 +65,13 @@ export default function CartItem({ item }) {
           objectFit="cover"
         />
       </div>
-      <div className="  w-4/6 h-full flex flex-col p-2 space-y-3">
+      <div className=" w-4/6 h-full flex flex-col p-2 space-y-3">
         <div className="flex h-5/6 w-full justify-between">
           <div className="flex flex-col space-y-1">
             <h1 className="text-xs font-bold">{item.name}</h1>
             <p className="text-xxs font-bold">{item.description}</p>
           </div>
-          <div className="relative cursor-pointer">
+          <div className="w-[80px] relative cursor-pointer">
             <Image
               onClick={() => {
                 removeItem();
@@ -87,7 +87,7 @@ export default function CartItem({ item }) {
           <div>
             <h1 className="text-xs font-bold">${item.price}</h1>
           </div>
-          <div className=" w-1/4 h-full flex items-center justify-evenly p-2">
+          <div className="w-3/4 md:w-1/4 h-full flex items-center justify-evenly p-2">
             <Image
               className="cursor-pointer"
               onClick={IncItem}

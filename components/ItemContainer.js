@@ -7,19 +7,10 @@ export default function ItemContainer({ search, Items, filter }) {
   //console.log(Items);
  
   const [quantity,setQuantity]=useState(1);
-const ORDER_QUERY = gql`
-mutation  {
-  createOrder(input:{customerEmailPhone:"binyamg23@gmail.com",country:"ethiopia",customerFullName:"Tracy Mac",customerCity:"mekanisa",customerAddress1:"addis ababa",zipCode:"11655",customerAddress2:"mekanjs"
- }){
-   orderId
- }
-     
 
-
-}`;
   return (
    
-    <motion.div layout  className="h-full w-full flex flex-wrap gap-8 p-1">
+    <motion.div layout  className="h-full w-full flex flex-wrap justify-center gap-8 p-1">
       {Items.filter((res) => {
         if (search === "") {
           if (filter.length === 0) {

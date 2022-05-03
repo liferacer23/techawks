@@ -6,7 +6,7 @@ export default function Sidebar({setHamburger}) {
     const router = useRouter();
   return (
   
-  <motion.div animate={{y:0,opacity:1}} initial={{y:-100, opacity:0}} exit={{y:-100,opacity:0}} transition={{duration:1}}  className="z-50 md:hidden flex flex-col items-center justify-evenly absolute top-20 right-2 w-48 h-96 bg-white space-y-2 text-sm font-bold text-gray-500">
+  <motion.div animate={{x:0,opacity:1}} initial={{x:-100, opacity:0}} exit={{x:-100,opacity:0}} transition={{duration:1}}  className=" fixed absolute top-20 right-2 z-50 md:hidden flex flex-col items-center justify-evenly w-48 h-96 bg-white space-y-2 text-sm font-bold text-gray-500">
             <Link href="/">
               <div onClick={()=>{setHamburger(prev=>!prev)}} className="flex flex-col space-y-1 w-1/4 items-center justify-start p-1">
                 <span className="cursor-pointer ">Home</span>
