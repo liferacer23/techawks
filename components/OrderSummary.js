@@ -33,8 +33,8 @@ export default function OrderSummary({
             height={100}
           />
         </div>
-        <div className="flex justify-between">
-          <div className="flex p-2 justify-center items-center w-2/6 h-96">
+        <div className="flex h-[500px] lg:flex-row flex-col lg:justify-between overflow-y-auto">
+          <div className="flex p-2 justify-center items-center w-full lg:w-2/6 h-96">
             <div className="flex flex-col space-y-5">
               <div className="flex-col w-full h-fit space-y-2">
                 <Image
@@ -64,7 +64,7 @@ export default function OrderSummary({
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-3/6 h-[31rem] mt-1 mx-5 p-2 ">
+          <div className="flex flex-col w-full lg:w-3/6 h-[31rem] mt-1 mx-5 p-2 ">
             <div className="w-full flex justify-start font-bold p-2">
               Order Summary
             </div>

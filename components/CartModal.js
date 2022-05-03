@@ -103,8 +103,8 @@ export default function CartModal({ setCartFlipper }) {
                 <div>
                 <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{clearCart()}} className="border-2 border-gray-500 rounded-full text-black font-bold text-xxxs md:text-xs h-8 w-[80px] md:h-8 md:w-36">CLEAR CART</button>    </div>
                 <div className="flex space-x-2"> 
-                <button onClick={()=>{setCartFlipper(prev=>!prev)}} className="border-2 border-gray-500 rounded-full text-black font-bold text-xxxs md:text-xs h-[30px] md:h-9  m:w-48">CONTINUE SHOPPING</button>
-                <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{ordersSet()}}className="border-2 border-black-500 rounded-full text-white text-xxxs md:text-xs bg-black h-8 md:h-9 md:w-48">PROCESS TO CHECKOUT</button>
+                <button onClick={()=>{setCartFlipper(prev=>!prev)}} className="border-2 border-gray-500 rounded-full text-black font-bold text-xxxs md:text-xxs h-[30px] md:h-9 p-1 m:w-50">CONTINUE SHOPPING</button>
+                <button /* disabled={cart.items.length===0? true:false} */ onClick={()=>{ordersSet()}}className="border-2 border-black-500 rounded-full text-white text-xxxs md:text-xs bg-black p-1 h-8 md:h-9 md:w-48">PROCESS TO CHECKOUT</button>
                 </div>
               </div>
           </div>
