@@ -56,14 +56,14 @@ export default function ProductsLayout({setSearch,results }) {
                     href={`/products/product/${payload.categoryId}`}
                     passHref
                   >
-                    <>
+                
                     
                     <div  onClick={()=>{setProducts(prev=>!prev)}} className="p-1 flex flex-col space-y-2 items-center">
                       <span onClick={()=>{setProducts(prev=>!prev)}} className={`cursor-pointer ${payload.categoryId === router.query.product ? "text-black" : ""}`}>{payload.name}</span>
                       <span className="h-[0.8px] w-[110px] bg-gray-300"></span>
                     </div>
   
-                    </>
+                  
                   </Link>
                 );
               })}
