@@ -85,7 +85,7 @@ export default function Product({ results, params }) {
       <div  className=" h-full pt-2 mx-8">
     
         <div className="flex space-x-4 w-full h-full">
-          <div className="hidden md:block md:sticky md:left-0 top-[198px] md:h-100 md:overflow-y-scroll md:w-2/6 md:flex md:flex-col md:space-y-3">
+          <div className="hidden md:block md:sticky md:left-0 top-[198px] md:h-100 md:overflow-y-scroll md:w-[250px] md:flex md:flex-col md:space-y-3">
             {/* Left Container */}
             <div className="flex flex-col items-left mt-2 justify-center">
               {/* Left-Container-Top */}
