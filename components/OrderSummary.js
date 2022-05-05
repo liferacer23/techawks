@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import OrderSummaryItem from "./OrderSummaryItem";
 import {motion} from "framer-motion"
 export default function OrderSummary({
-  data,
+  orderData,
   setOrderSummary,
   setCartFlipper,
   setCheckout,
@@ -14,8 +14,8 @@ export default function OrderSummary({
   const date = new Date();
   
   const deliveryDate = new Date(date.getFullYear(), date.getMonth() + 1, 12);
-  const cart = useSelector((state) => state.cart);
-  console.log(data);
+  //const cart = useSelector((state) => state.cart);
+ // console.log(orderData);
  // console.log(cart);
   const closer = () => {
     setCartFlipper(false);
@@ -71,7 +71,7 @@ export default function OrderSummary({
             <div className="flex w-full p-2 justify-between">
               <h1 className="text-xxs font-bold text-gray-400">ORDER NO</h1>
               <div className=" w-3/6 flex justify-start items-center">
-                <h1 className="text-xs font-bold text-black">568484</h1>
+                <h1 className="text-xs font-bold text-black">{orderData.createOrder.orderNumber}</h1>
               </div>
             </div>
             <div className="flex w-full p-2 justify-between">
@@ -79,7 +79,7 @@ export default function OrderSummary({
                 EST DELIVERY DATE
               </h1>
               <div className=" w-3/6 flex justify-start items-center">
-                <h1 className="text-xs font-bold text-black">{deliveryDate.toDateString()}</h1>
+                <h1 className="text-xs font-bold text-black">{orderData.createOrder.deliveryDate}</h1>
               </div>
             </div>
             <div className="flex w-full p-2 justify-between">
@@ -88,7 +88,7 @@ export default function OrderSummary({
               </h1>
               <div className=" w-3/6 flex justify-start items-center">
                 <h1 className="w-36 text-xs font-bold text-black">
-                  PAUL WRITER AFRICA ANV ST, ADDIS ABABA ETHIOPIA
+                  {orderData.createOrder.customerAddress1}, {orderData.createOrder.customerCity} {orderData.createOrder.country}
                 </h1>
               </div>
             </div>

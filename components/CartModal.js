@@ -16,7 +16,7 @@ export default function CartModal({ setCartFlipper }) {
   const ordersSet =()=>{
     /* let number = cart.items.length
     let index = cart.orders.length-cart.items.length */
-   setOrders(cart.orders)
+  // setOrders(cart.orders)
    const uniqueAddresses = Array.from(new Set(cart.orders.map(a => a.productId)))
  .map(productId => {
    return cart.orders.find(a => a.productId === productId)
@@ -82,12 +82,14 @@ export default function CartModal({ setCartFlipper }) {
             <h4 className=" font-bold text-md">Order Summary</h4>
           </div>
           {/* /////////////////////////// */}
+          <AnimatePresence>
      {cart.items.map((item)=>{
        // eslint-disable-next-line react/jsx-key
-       return( <AnimatePresence>
+       return( 
          <CartItem key={item.productId} item = {item}/>
-         </AnimatePresence>)
-      })}
+         )
+        })}
+        </AnimatePresence>
         
         
         </div>
