@@ -16,7 +16,8 @@ export default function ProductsLayout({setSearch,results }) {
     const x = element.current.offsetLeft;
     setX(x);
     
-    console.log(x)
+    console.log(x);
+    console.log(element);
     
   };
 
@@ -102,7 +103,7 @@ export default function ProductsLayout({setSearch,results }) {
                       <span  className={`cursor-pointer ${payload.categoryId === router.query.product ? "text-black" : ""}`}>{payload.name}</span>
                       <AnimatePresence>
                       {payload.categoryId === router.query.product ? (
-                        <motion.span  animate={{x:x-900,opacity:1}} initial={{x:x,opacity:0}}  transition={{duration:1}} className="bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></motion.span>
+                        <motion.span  animate={{x:0,opacity:1}} initial={{x:x-900,opacity:0}} exit={{x:x-900,opacity:0}}  transition={{duration:1}} className="bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></motion.span>
                         ) : (
                           ""
                           )}

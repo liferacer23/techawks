@@ -24,7 +24,6 @@ const ORDER_MUTATION = gql`
 `;
 
 export default function Checkout({ orders, setCheckout, setCartFlipper }) {
-
   const [orderSummary, setOrderSummary] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -45,7 +44,14 @@ export default function Checkout({ orders, setCheckout, setCartFlipper }) {
   });
   //const cart = useSelector((state) => state.cart);
   //console.log(orders);
-
+  const formChecker =()=>{
+    if(obj.customerEmailPhone.length>0 && obj.country.length>0 && obj.customerFullName.length>0 && obj.customerCity.length>0 && obj.customerAddress1.length>0 && obj.zipCode.length>0){
+      return true
+    }
+    else{
+      return false
+    }
+  }
   const assignTotal = () => {
     setTotal(price);
   };
@@ -208,12 +214,13 @@ export default function Checkout({ orders, setCheckout, setCartFlipper }) {
                     onClick={()=>{setLoading(true)}}
                     className={`${confirmed?"flex justify-center items-center text-xs bg-green-500 rounded-xl w-20 h-8 text-white":"flex justify-center items-center text-xs bg-black rounded-xl w-20 h-8 text-white"}`}
                     type="submit"
+                    disabled={()=>{formChecker()}}
                   >
                     {confirmed?"Confirmed":loading?<Image src="/assets/Icons/loading.svg" alt="loading icon" width={25} height={25}/>:"Confirm"}
                   </button>
                 </div>
               </form>
-              <div className="flex flex-col space-y-2 p-2  pb-5 shadow-xl shadow-3xl justify-center rounded-xl w-4/6">
+              <div className="hidden md:block flex flex-col space-y-2 p-2  pb-5 shadow-xl shadow-3xl justify-center rounded-xl w-4/6">
                 <div className=" overflow-y-auto">
                   {orders.map((item) => {
                     return <CheckoutItem key={item.productId} item={item} />;

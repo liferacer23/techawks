@@ -58,10 +58,10 @@ export default function Home() {
         </div>
         <div className="flex flex-col items-end justify-center ml-auto w-full lg:w-9/12">
           <h3 className="text-3xl lg:text-4xl font-medium text-black-600">
-            We Provide Many Features You Can Use
+            We Provide Many Products and Services
           </h3>
           <p className="my-2 text-black-500">
-            You can explore the features that we provide with fun and have their
+            You can explore the products and services that we provide with fun and have their
             own functions each feature.
           </p>
           <ul className="text-black-500 self-start list-inside ml-8">

@@ -38,6 +38,7 @@ setWidth(carousel.current.scrollWidth-carousel.current.offsetWidth);
                 src={item}
                 width={410}
                 height={430}
+                priority
               />
             </motion.div>
           );

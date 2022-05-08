@@ -36,8 +36,7 @@ export default function Layout({ children }) {
             <Link href="/products/product/aeb50ed6-580d-a065-383a-e3932fbec6a1">
               <div className="flex flex-col space-y-1 w-1/4 items-center justify-start p-1">
                 <span className="cursor-pointer">Products</span>
-                {router.asPath ==
-                "/products/product/aeb50ed6-580d-a065-383a-e3932fbec6a1" ? (
+                {router.asPath.includes("/products") ? (
                   <span className=" bg-gray-700 h-0.5 w-5 flex justify-center items-center rounded-full"></span>
                 ) : null}
               </div>
@@ -105,7 +104,7 @@ export default function Layout({ children }) {
             <Image alt ="image" src="/assets/Icons/logo.svg" width={100} height={60} />
           </div>
           <div>
-          <h1 className="text-black text-1xs">
+          <h1 className="text-black md:text-xs text-xxs ">
           &copy; Allrights Reserved 2022,Addis Ababa,Ethiopia
           </h1>
           </div>
