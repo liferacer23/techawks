@@ -22,12 +22,12 @@ export default function HomeSlider() {
   ];
 
   useEffect(()=>{
-console.log(carousel.current.scrollWidth + carousel.current.offsetWidth)
+//console.log(carousel.current.scrollWidth + carousel.current.offsetWidth)
 setWidth(carousel.current.scrollWidth-carousel.current.offsetWidth);
   },[])
   return (
     <motion.div ref={carousel} whileTap={{cursor:"grabbing"}} className="relative p-2 h-[28rem] w-full cursor-grab overflow-hidden ">
-      <motion.div drag="x"  dragConstraints={{right:0,left:-width}} className="flex absolute h-[430px]">
+      <motion.div  animate={{x:-width}} transition={{duration:20,yoyo:Infinity}} initial={{x:0}} drag="x"  dragConstraints={{right:0,left:-width}} className="flex absolute h-[430px]">
         {images.map((item, index) => {
           return (
             <motion.div key={index} animate={{opacity:1}} initial={{opacity:0}} transition={{duration:0.8}} className="pointer-events-none p-3 min-w-[25rem] min-h-[40rem]">
