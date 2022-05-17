@@ -116,7 +116,7 @@ export default function Checkout({ orders, setCheckout, setCartFlipper }) {
                 onSubmit={(e) => {
                   confirm(e);
                 }}
-                className="overflow-y-auto flex flex-col space-y-1 p-2 shadow-xl  items-center-justify-center rounded-xl w-2/6 px-10"
+                className="w-6/6 sm:w-3/6  overflow-y-auto flex flex-col space-y-1 p-2 shadow-xl  items-center-justify-center rounded-xl lg:w-2/6 px-10"
               >
                 <div className="flex flex-col space-y-4 h-1/6">
                   <h1 className="text-xs font-bold">Contact Information</h1>
@@ -220,7 +220,7 @@ export default function Checkout({ orders, setCheckout, setCartFlipper }) {
                   </button>
                 </div>
               </form>
-              <div className="hidden md:block flex flex-col space-y-2 p-2  pb-5 shadow-xl shadow-3xl justify-center rounded-xl w-4/6">
+              <div className="hidden lg:block flex flex-col space-y-2 p-2  pb-5 shadow-xl shadow-3xl justify-center rounded-xl w-4/6">
                 <div className=" overflow-y-auto">
                   {orders.map((item) => {
                     return <CheckoutItem key={item.productId} item={item} />;

@@ -23,6 +23,7 @@ const cartSlice = createSlice({
         removeItems:(state,action)=>{
             //state.items.push(action.payload.productId);
           state.items=state.items.filter(item => item.productId !== action.payload.item.productId);
+          state.orders=state.orders.filter(item => item.productId !== action.payload.item.productId);
          
           state.total-=action.payload.item.price
           
