@@ -221,7 +221,7 @@ export default function Checkout({ orders, setCheckout, setCartFlipper }) {
                 </div>
               </form>
               <div className="hidden lg:block flex flex-col space-y-2 p-2  pb-5 shadow-xl shadow-3xl justify-center rounded-xl w-4/6">
-                <div className=" overflow-y-auto">
+                <div className="overflow-y-auto h-[70%]">
                   {orders.map((item) => {
                     return <CheckoutItem key={item.productId} item={item} />;
                   })}
