@@ -214,7 +214,7 @@ export default function Checkout({ orders, setCheckout, setCartFlipper }) {
                     onClick={()=>{setLoading(true)}}
                     className={`${confirmed?"flex justify-center items-center text-xs bg-green-500 rounded-xl w-20 h-8 text-white":"flex justify-center items-center text-xs bg-black rounded-xl w-20 h-8 text-white"}`}
                     type="submit"
-                    disabled={()=>{formChecker()}}
+                    
                   >
                     {confirmed?"Confirmed":loading?<Image src="/assets/Icons/loading.svg" alt="loading icon" width={25} height={25}/>:"Confirm"}
                   </button>
