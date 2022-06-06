@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { addItems } from "../redux/cartSlice";
 import { motion } from "framer-motion";
-
+import Skeleton from "./Skeleton";
 export default function Item({ product, quantity }) {
   const [added, setAdded] = useState(false);
   const dispatch = useDispatch();
@@ -28,7 +28,10 @@ export default function Item({ product, quantity }) {
   } ,[cart.items])  */
 
   return (
-    <motion.div
+    <>
+ 
+     {product ? 
+      <motion.div
       transition={{ duration: 0.5 }}
       layout
       animate={{ opacity: 1 }}
@@ -85,5 +88,7 @@ export default function Item({ product, quantity }) {
         </div>
       </div>
     </motion.div>
+    :<Skeleton/>}
+    </>
   );
 }
